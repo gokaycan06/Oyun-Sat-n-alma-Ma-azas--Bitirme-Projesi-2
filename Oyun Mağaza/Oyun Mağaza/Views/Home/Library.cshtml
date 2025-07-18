@@ -1,0 +1,995 @@
+@{
+    ViewData["Title"] = "Kütüphane";
+    Layout = "_StoreLayout";
+}
+
+<style>
+    .library-container {
+        display: flex;
+        height: calc(100vh - 80px);
+        background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+        margin-top: 80px;
+    }
+
+    .library-sidebar {
+        width: 300px;
+        background: rgba(0, 0, 0, 0.3);
+        border-right: 2px solid #66c0f4;
+        overflow-y: auto;
+        padding: 20px 0;
+    }
+
+    .library-content {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+    }
+
+    .library-header {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .library-header h1 {
+        color: #66c0f4;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .library-header p {
+        color: #c7d5e0;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .game-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .game-item {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(102, 192, 244, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .game-item:hover {
+        background: rgba(102, 192, 244, 0.1);
+        border-left: 4px solid #66c0f4;
+    }
+
+    .game-item.active {
+        background: rgba(102, 192, 244, 0.2);
+        border-left: 4px solid #66c0f4;
+    }
+
+    .game-item-cover {
+        width: 60px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 2px solid rgba(102, 192, 244, 0.3);
+    }
+
+    .game-item-info {
+        flex: 1;
+    }
+
+    .game-item-title {
+        color: #c7d5e0;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    .game-item-publisher {
+        color: #8f98a0;
+        font-size: 0.9rem;
+    }
+
+    .game-detail {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid rgba(102, 192, 244, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .game-detail-header {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+        align-items: flex-start;
+    }
+
+    .game-detail-cover {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 3px solid #66c0f4;
+        box-shadow: 0 8px 25px rgba(102, 192, 244, 0.3);
+    }
+
+    .game-detail-info {
+        flex: 1;
+    }
+
+    .game-detail-title {
+        color: #66c0f4;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .game-detail-meta {
+        color: #c7d5e0;
+        margin-bottom: 20px;
+    }
+
+    .game-detail-meta p {
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+
+    .game-detail-meta strong {
+        color: #66c0f4;
+    }
+
+    .game-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn-play {
+        background: linear-gradient(135deg, #66c0f4 0%, #4a9eff 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 192, 244, 0.3);
+    }
+
+    .btn-play:hover {
+        background: linear-gradient(135deg, #4a9eff 0%, #66c0f4 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 192, 244, 0.4);
+    }
+
+    .btn-review {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    .btn-review:hover {
+        background: linear-gradient(135deg, #ee5a52 0%, #ff6b6b 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn-store {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    .btn-store:hover {
+        background: linear-gradient(135deg, #20c997 0%, #28a745 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    }
+
+    .game-screenshots {
+        margin-top: 30px;
+    }
+
+    .game-screenshots h3 {
+        color: #66c0f4;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(102, 192, 244, 0.3);
+    }
+
+    .screenshots-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .screenshot-item {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 2px solid rgba(102, 192, 244, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .screenshot-item:hover {
+        transform: scale(1.05);
+    }
+
+    .screenshot-item img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .no-games {
+        text-align: center;
+        color: #8f98a0;
+        font-size: 1.2rem;
+        margin-top: 50px;
+    }
+
+    .no-games i {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: #66c0f4;
+    }
+
+    .bundle-item {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(102, 192, 244, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .bundle-item:hover {
+        background: rgba(102, 192, 244, 0.1);
+        border-left: 4px solid #ff6b6b;
+    }
+
+    .bundle-item.active {
+        background: rgba(255, 107, 107, 0.2);
+        border-left: 4px solid #ff6b6b;
+    }
+
+    .bundle-badge {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+
+    .dlc-badge {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+
+    .game-achievements {
+        margin-top: 30px;
+    }
+
+    .game-achievements h3 {
+        color: #66c0f4;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(102, 192, 244, 0.3);
+    }
+
+    .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+    }
+
+    .achievement-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid rgba(102, 192, 244, 0.3);
+        transition: all 0.3s ease;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .achievement-item.unlocked {
+        background: rgba(40, 167, 69, 0.1);
+        border-color: rgba(40, 167, 69, 0.5);
+    }
+
+    .achievement-item.locked {
+        background: rgba(108, 117, 125, 0.1);
+        border-color: rgba(108, 117, 125, 0.5);
+        opacity: 0.7;
+    }
+
+    .achievement-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .achievement-icon {
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(102, 192, 244, 0.1);
+        border: 2px solid rgba(102, 192, 244, 0.3);
+    }
+
+    .achievement-item.unlocked .achievement-icon {
+        background: rgba(40, 167, 69, 0.1);
+        border-color: rgba(40, 167, 69, 0.5);
+    }
+
+    .achievement-item.locked .achievement-icon {
+        background: rgba(108, 117, 125, 0.1);
+        border-color: rgba(108, 117, 125, 0.5);
+    }
+
+    .achievement-info {
+        flex: 1;
+    }
+
+    .achievement-name {
+        color: #c7d5e0;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .achievement-description {
+        color: #8f98a0;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    .achievement-status {
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 12px;
+        display: inline-block;
+    }
+
+    .achievement-status.unlocked {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+    }
+
+    .achievement-status.locked {
+        background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        color: white;
+    }
+
+    @@media (max-width: 768px) {
+        .library-container {
+            flex-direction: column;
+            height: auto;
+        }
+        
+        .library-sidebar {
+            width: 100%;
+            height: 300px;
+        }
+        
+        .game-detail-header {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .game-detail-cover {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    .game-dlcs {
+        margin-top: 30px;
+    }
+
+    .game-dlcs h3 {
+        color: #66c0f4;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #66c0f4;
+        padding-bottom: 10px;
+    }
+
+    .dlcs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .dlc-item {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .dlc-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        border-color: rgba(164, 208, 7, 0.3);
+    }
+
+    .dlc-cover {
+        position: relative;
+        height: 180px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dlc-cover-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        display: block;
+    }
+
+    .dlc-item:hover .dlc-cover-image {
+        transform: scale(1.05);
+    }
+
+    .dlc-info {
+        padding: 20px;
+    }
+
+    .dlc-name {
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+
+    .dlc-description {
+        color: #b8b6b4;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .dlc-meta {
+        margin-bottom: 15px;
+    }
+
+    .dlc-release-date {
+        color: #66c0f4;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .dlc-price-section {
+        margin-bottom: 15px;
+    }
+
+    .dlc-price {
+        color: #a4d007;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .dlc-price-free {
+        color: #66c0f4;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .dlc-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-dlc-buy, .btn-dlc-download {
+        flex: 1;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .btn-dlc-buy {
+        background: linear-gradient(135deg, #a4d007 0%, #8bc34a 100%);
+        color: #000;
+    }
+
+    .btn-dlc-buy:hover {
+        background: linear-gradient(135deg, #8bc34a 0%, #a4d007 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(164, 208, 7, 0.3);
+    }
+
+    .btn-dlc-download {
+        background: linear-gradient(135deg, #66c0f4 0%, #4fc3f7 100%);
+        color: #000;
+    }
+
+    .btn-dlc-download:hover {
+        background: linear-gradient(135deg, #4fc3f7 0%, #66c0f4 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(102, 192, 244, 0.3);
+    }
+</style>
+
+<div class="library-container">
+    <!-- Sol Sidebar - Oyun Listesi -->
+    <div class="library-sidebar">
+        <div class="library-header">
+            <h3 style="color: #66c0f4; margin-bottom: 20px;">Kütüphanem</h3>
+        </div>
+        
+        @if (ViewBag.UserGames != null && ((List<Oyun_Mağaza.ViewModels.GameCardViewModel>)ViewBag.UserGames).Count > 0)
+        {
+            <ul class="game-list">
+                @foreach (var game in ViewBag.UserGames)
+                {
+                    <li class="game-item @(game == ViewBag.SelectedGame ? "active" : "")" 
+                        onclick="selectGame(@game.Id)">
+                        <img src="@game.CoverUrl" alt="@game.Title" class="game-item-cover" />
+                        <div class="game-item-info">
+                            <div class="game-item-title">@game.Title</div>
+                            <div class="game-item-publisher">@game.Publisher</div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            
+            @if (ViewBag.UserBundles != null && ((List<Oyun_Mağaza.ViewModels.BundleViewModel>)ViewBag.UserBundles).Count > 0)
+            {
+                <div style="margin-top: 30px; padding: 0 20px;">
+                    <h4 style="color: #ff6b6b; margin-bottom: 15px;">Bundle'larım</h4>
+                    <ul class="game-list">
+                        @foreach (var bundle in ViewBag.UserBundles)
+                        {
+                            <li class="game-item" onclick="selectBundle(@bundle.BundleId)">
+                                <img src="@bundle.CoverImage" alt="@bundle.Name" class="game-item-cover" />
+                                <div class="game-item-info">
+                                    <div class="game-item-title">
+                                        @bundle.Name
+                                        <span class="bundle-badge">Bundle</span>
+                                    </div>
+                                    <div class="game-item-publisher">@bundle.GameCount oyun</div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            @if (ViewBag.UserDLCs != null && ((List<Oyun_Mağaza.ViewModels.DLCViewModel>)ViewBag.UserDLCs).Count > 0)
+            {
+                <div style="margin-top: 30px; padding: 0 20px;">
+                    <h4 style="color: #28a745; margin-bottom: 15px;">DLC'lerim</h4>
+                    <ul class="game-list">
+                        @foreach (var dlc in ViewBag.UserDLCs)
+                        {
+                            <li class="game-item" onclick="selectDLC(@dlc.DLCId)">
+                                <img src="@dlc.CoverImage" alt="@dlc.Name" class="game-item-cover" />
+                                <div class="game-item-info">
+                                    <div class="game-item-title">
+                                        @dlc.Name
+                                        <span class="dlc-badge">DLC</span>
+                                    </div>
+                                    <div class="game-item-publisher">@dlc.GameName</div>
+                                    <div class="dlc-status">
+                                        @if (dlc.IsInstalled)
+                                        {
+                                            <span style="color: #28a745; font-size: 0.8rem;">✓ Yüklü</span>
+                                        }
+                                        else
+                                        {
+                                            <span style="color: #ffc107; font-size: 0.8rem;">⬇ DLC'yi İndir</span>
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="no-games">
+                <i class="fas fa-gamepad"></i>
+                <p>Henüz hiç oyun satın almadınız.</p>
+                <p>Mağazaya gidip oyun satın alabilirsiniz!</p>
+            </div>
+        }
+    </div>
+
+    <!-- Sağ İçerik - Oyun Detayı -->
+    <div class="library-content">
+        @if (ViewBag.SelectedGame != null)
+        {
+            var game = ViewBag.SelectedGame;
+            <div class="game-detail">
+                <div class="game-detail-header">
+                    <img src="@game.CoverUrl" alt="@game.Title" class="game-detail-cover" />
+                    <div class="game-detail-info">
+                        <h1 class="game-detail-title">@game.Title</h1>
+                        <div class="game-detail-meta">
+                            <p><strong>Geliştirici:</strong> @game.Developer</p>
+                            <p><strong>Yayıncı:</strong> @game.Publisher</p>
+                            @{
+                                var releaseDate = game.ReleaseDate as DateTime?;
+                                var purchaseDate = game.PurchaseDate as DateTime?;
+                            }
+                            @if (releaseDate.HasValue && releaseDate.Value != DateTime.MinValue)
+                            {
+                                <p><strong>Çıkış Tarihi:</strong> @releaseDate.Value.ToString("dd.MM.yyyy")</p>
+                            }
+                            @if (purchaseDate.HasValue && purchaseDate.Value != DateTime.MinValue)
+                            {
+                                <p><strong>Satın Alma Tarihi:</strong> @purchaseDate.Value.ToString("dd.MM.yyyy")</p>
+                            }
+                        </div>
+                        <div class="game-actions">
+                            <button class="btn-play" onclick="launchGame(@game.Id)">
+                                <i class="fas fa-play"></i> Oyunu Başlat
+                            </button>
+                            <button class="btn-review" onclick="addReview(@game.Id)">
+                                <i class="fas fa-star"></i> İnceleme Ekle
+                            </button>
+                            <button class="btn-store" onclick="visitStore(@game.Id)">
+                                <i class="fas fa-store"></i> Mağaza Sayfasını Ziyaret Et
+                            </button>
+                        </div>
+                        
+                        <!-- Test Butonları (Geliştirme için) -->
+                        <div class="test-buttons" style="margin-top: 15px; padding: 10px; background: rgba(255, 193, 7, 0.1); border-radius: 8px; border: 1px solid rgba(255, 193, 7, 0.3);">
+                            <small style="color: #ffc107; display: block; margin-bottom: 10px;">🧪 Test Butonları (Geliştirme için)</small>
+                            <button class="btn-test" onclick="simulatePlayTime(@game.Id)" style="background: #17a2b8; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-right: 5px; font-size: 0.8rem;">
+                                ⏱️ 10 Saniye Oyna
+                            </button>
+                            <button class="btn-test" onclick="simulatePlayTime1Minute(@game.Id)" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">
+                                🏆 1 Dakika Oyna
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                @if (game.ScreenshotUrls != null && game.ScreenshotUrls.Count > 0)
+                {
+                    <div class="game-screenshots">
+                        <h3>Screenshots</h3>
+                        <div class="screenshots-grid">
+                            @foreach (var screenshot in ((IEnumerable<string>)game.ScreenshotUrls).Take(6))
+                            {
+                                <div class="screenshot-item">
+                                    <img src="@screenshot" alt="@game.Title Screenshot" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                @if (ViewBag.GameAchievements != null)
+                {
+                    <div class="game-achievements">
+                        <h3>Achievement'lar</h3>
+                        <div class="achievements-grid">
+                            @foreach (var achievement in ViewBag.GameAchievements)
+                            {
+                                var isUnlocked = ((List<int>)ViewBag.UserUnlockedAchievements).Contains(achievement.AchievementId);
+                                <div class="achievement-item @(isUnlocked ? "unlocked" : "locked")">
+                                    <div class="achievement-icon">
+                                        <span>@achievement.Icon</span>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <div class="achievement-name">@achievement.Name</div>
+                                        <div class="achievement-description">@achievement.Description</div>
+                                        @if (isUnlocked)
+                                        {
+                                            <div class="achievement-status unlocked">✓ Açıldı</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="achievement-status locked">🔒 Kilitli</div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                @if (ViewBag.GameDLCs != null && ((List<Oyun_Mağaza.ViewModels.DLCViewModel>)ViewBag.GameDLCs).Count > 0)
+                {
+                    <div class="game-dlcs">
+                        <h3>DLC'ler</h3>
+                        <div class="dlcs-grid">
+                            @foreach (var dlc in ViewBag.GameDLCs)
+                            {
+                                <div class="dlc-item">
+                                    <div class="dlc-cover">
+                                        <img src="@dlc.CoverImage" alt="@dlc.Name" class="dlc-cover-image">
+                                    </div>
+                                    <div class="dlc-info">
+                                        <h4 class="dlc-name">@dlc.Name</h4>
+                                        <p class="dlc-description">@dlc.Description</p>
+                                        <div class="dlc-meta">
+                                            <span class="dlc-release-date">@dlc.ReleaseDate.ToString("dd.MM.yyyy")</span>
+                                        </div>
+                                        <div class="dlc-price-section">
+                                            @if (dlc.Price == 0)
+                                            {
+                                                <span class="dlc-price-free">Ücretsiz</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="dlc-price">₺@dlc.Price.ToString("F2")</span>
+                                            }
+                                        </div>
+                                        <div class="dlc-actions">
+                                            @if (dlc.IsOwned)
+                                            {
+                                                <button class="btn-dlc-download" onclick="downloadDLC(@dlc.DLCId)">
+                                                    <i class="fas fa-download"></i> İndir
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn-dlc-buy" onclick="addDLCToCart(@dlc.DLCId)">
+                                                    @if (dlc.Price == 0)
+                                                    {
+                                                        <span>Ücretsiz İndir</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>Sepete Ekle</span>
+                                                    }
+                                                </button>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="no-games">
+                <i class="fas fa-info-circle"></i>
+                <p>Oyun seçiniz</p>
+                <p>Sol taraftan bir oyun seçerek detaylarını görüntüleyebilirsiniz.</p>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function selectGame(gameId) {
+            // Sayfayı seçili oyun ile yenile
+            window.location.href = '/Home/Library?selectedGame=' + gameId;
+        }
+
+        function selectBundle(bundleId) {
+            // Bundle detayları için yönlendirme
+            window.location.href = '/Bundle/Details/' + bundleId;
+        }
+
+        function selectDLC(dlcId) {
+            // DLC detayları için yönlendirme
+            window.location.href = '/DLC/Details/' + dlcId;
+        }
+
+        function launchGame(gameId) {
+            // Oyun başlatma simülasyonu
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Home/StartGame', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ gameId: gameId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Oyun başlatıldı! Achievement kontrol ediliyor...');
+                    // Sayfayı yenile
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Oyun başlatılırken bir hata oluştu.');
+            });
+        }
+
+        function addReview(gameId) {
+            // İnceleme ekleme sayfasına yönlendirme
+            window.location.href = '/Home/AddReview?gameId=' + gameId;
+        }
+
+        function visitStore(gameId) {
+            // Mağaza sayfasına yönlendirme
+            window.location.href = '/Game/Details/' + gameId;
+        }
+
+        // Oynama süresi simülasyonu (test için)
+        function simulatePlayTime(gameId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            // 10 saniye oynama simülasyonu
+            fetch('/Home/UpdatePlayTime', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ gameId: gameId, playTimeSeconds: 10 })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.unlockedAchievements && data.unlockedAchievements.length > 0) {
+                        alert(`Achievement açıldı: ${data.unlockedAchievements.join(', ')}`);
+                    }
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // 1 dakika oynama simülasyonu (test için)
+        function simulatePlayTime1Minute(gameId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Home/UpdatePlayTime', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ gameId: gameId, playTimeSeconds: 60 })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.unlockedAchievements && data.unlockedAchievements.length > 0) {
+                        alert(`Achievement açıldı: ${data.unlockedAchievements.join(', ')}`);
+                    }
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function addDLCToCart(dlcId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Cart/AddDLCToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ dlcId: dlcId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('DLC sepete eklendi!');
+                    // Sepet sayısını güncelle
+                    if (typeof updateCartBadge === 'function') {
+                        updateCartBadge(data.cartCount);
+                    }
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('DLC sepete eklenirken bir hata oluştu.');
+            });
+        }
+
+        function downloadDLC(dlcId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Home/DownloadDLC', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ dlcId: dlcId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('DLC indirme başlatıldı!');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('DLC indirilirken bir hata oluştu.');
+            });
+        }
+    </script>
+} 

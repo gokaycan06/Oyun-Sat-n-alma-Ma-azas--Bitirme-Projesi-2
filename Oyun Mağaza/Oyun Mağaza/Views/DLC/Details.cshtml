@@ -1,0 +1,368 @@
+@model Oyun_Mağaza.Models.DLC
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "_StoreLayout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/game-details.css?v=@DateTime.Now.Ticks" />
+    <style>
+        .game-details-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .game-details-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        @@media (max-width: 900px) {
+            .game-details-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        .game-info {
+            background: rgba(0,0,0,0.15);
+            border-radius: 12px;
+            padding: 32px 28px 28px 28px;
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+        }
+        .game-header {
+            margin-bottom: 18px;
+        }
+        .game-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+        .game-subtitle {
+            color: #b8b6b4;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+        .game-media {
+            margin-bottom: 22px;
+        }
+        .game-cover {
+            width: 100%;
+            max-width: 400px;
+            height: 220px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+        .game-cover img.cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+        .game-description {
+            margin: 28px 0 18px 0;
+        }
+        .game-description h3 {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .game-description p {
+            color: #c7d5e0;
+            font-size: 1rem;
+        }
+        .dlc-info {
+            background: rgba(79, 195, 247, 0.08);
+            border: 1px solid rgba(79, 195, 247, 0.18);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 18px 0 0 0;
+        }
+        .dlc-info h4 {
+            margin-bottom: 8px;
+            color: #4fc3f7;
+        }
+        .dlc-info ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+        .dlc-info li {
+            margin-bottom: 4px;
+            color: #b8b6b4;
+        }
+        .related-dlcs {
+            margin-top: 36px;
+        }
+        .related-dlcs h3 {
+            margin-bottom: 12px;
+        }
+        .related-dlc-card {
+            background: rgba(0, 0, 0, 0.18);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: background 0.3s;
+        }
+        .related-dlc-card:hover {
+            background: rgba(0, 0, 0, 0.28);
+        }
+        .related-dlc-image {
+            width: 80px;
+            height: 60px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .related-dlc-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+        .related-dlc-info {
+            flex: 1;
+        }
+        .related-dlc-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        .related-dlc-price {
+            color: #a4d007;
+            font-weight: 600;
+        }
+        .purchase-section {
+            background: rgba(0,0,0,0.13);
+            border-radius: 12px;
+            padding: 28px 22px 22px 22px;
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+        }
+        .purchase-card {
+            width: 100%;
+        }
+        .purchase-header h3 {
+            margin: 0 0 18px 0;
+            color: #fff;
+            font-size: 1.3rem;
+        }
+        .purchase-price {
+            margin-bottom: 18px;
+        }
+        .price-free {
+            color: #a4d007;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .price-amount {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .purchase-actions {
+            margin-bottom: 18px;
+        }
+        .owned-message, .warning-message {
+            color: #4fc3f7;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .btn-purchase {
+            width: 100%;
+            margin-top: 6px;
+        }
+        .purchase-features {
+            margin-top: 18px;
+        }
+        .purchase-features h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .purchase-features ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+        .purchase-features li {
+            color: #b8b6b4;
+            margin-bottom: 4px;
+        }
+        .dlc-badge {
+            background: #4fc3f7;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+}
+
+<div class="game-details-container">
+    <div class="game-details-grid">
+        <!-- SOL SÜTUN: Oyun Bilgileri -->
+        <div class="game-info">
+            <div class="game-header">
+                <div class="dlc-badge">DLC</div>
+                <h1 class="game-title">@Model.Name</h1>
+                <p class="game-subtitle">@Model.Game.Title için DLC</p>
+            </div>
+
+            <div class="game-media">
+                <div class="game-cover">
+                    <img src="/games/@Model.CoverImage" alt="@Model.Name" class="cover-image">
+                </div>
+            </div>
+
+            <div class="game-description">
+                <h3>Açıklama</h3>
+                <p>@Model.Description</p>
+            </div>
+
+            <div class="dlc-info">
+                <h4>📋 DLC Bilgileri</h4>
+                <ul>
+                    <li><strong>Ana Oyun:</strong> <a href="/Game/Details/@Model.GameId">@Model.Game.Title</a></li>
+                    <li><strong>Geliştirici:</strong> @Model.Game.Developer?.Name</li>
+                    <li><strong>Yayıncı:</strong> @Model.Game.Publisher?.Name</li>
+                    <li><strong>Çıkış Tarihi:</strong> @Model.ReleaseDate.ToString("dd.MM.yyyy")</li>
+                </ul>
+            </div>
+
+            @if (ViewBag.RelatedDLCs != null && ((List<DLC>)ViewBag.RelatedDLCs).Any())
+            {
+                <div class="related-dlcs">
+                    <h3>🔗 İlgili DLC'ler</h3>
+                    @foreach (var relatedDLC in (List<DLC>)ViewBag.RelatedDLCs)
+                    {
+                        <div class="related-dlc-card">
+                            <div class="related-dlc-image">
+                                <img src="/games/@relatedDLC.CoverImage" alt="@relatedDLC.Name">
+                            </div>
+                            <div class="related-dlc-info">
+                                <div class="related-dlc-title">@relatedDLC.Name</div>
+                                <div class="related-dlc-price">
+                                    @if (relatedDLC.Price == 0)
+                                    {
+                                        <span>Ücretsiz</span>
+                                    }
+                                    else
+                                    {
+                                        <span>₺@relatedDLC.Price.ToString("F2")</span>
+                                    }
+                                </div>
+                            </div>
+                            <a href="/DLC/Details/@relatedDLC.DLCId" class="btn btn-primary">İncele</a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- SAĞ SÜTUN: Satın Alma -->
+        <div class="purchase-section">
+            <div class="purchase-card">
+                <div class="purchase-header">
+                    <h3>🛒 Satın Al</h3>
+                </div>
+
+                <div class="purchase-price">
+                    @if (Model.Price == 0)
+                    {
+                        <div class="price-free">Ücretsiz</div>
+                    }
+                    else
+                    {
+                        <div class="price-amount">₺@Model.Price.ToString("F2")</div>
+                    }
+                </div>
+
+                <div class="purchase-actions">
+                    @if (ViewBag.UserOwnsDLC)
+                    {
+                        <div class="owned-message">
+                            <i class="fas fa-check-circle"></i>
+                            Bu DLC'ye sahipsiniz
+                        </div>
+                    }
+                    else if (!ViewBag.UserOwnsGame)
+                    {
+                        <div class="warning-message">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Bu DLC'yi satın almak için önce ana oyuna sahip olmalısınız
+                        </div>
+                        <a href="/Game/Details/@Model.GameId" class="btn btn-primary">
+                            <i class="fas fa-gamepad"></i> Ana Oyunu İncele
+                        </a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary btn-purchase" onclick="addDLCToCart(@Model.DLCId)">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    }
+                </div>
+
+                <div class="purchase-features">
+                    <h4>✨ Özellikler</h4>
+                    <ul>
+                        <li>✓ Anında İndirme</li>
+                        <li>✓ Sınırsız Erişim</li>
+                        <li>✓ Steam Cloud Desteği</li>
+                        <li>✓ Otomatik Güncellemeler</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function addDLCToCart(dlcId) {
+            fetch('/DLC/AddToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                },
+                body: JSON.stringify({ dlcId: dlcId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    // Sepet sayısını güncelle
+                    updateCartCount(data.cartCount);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                alert('Bir hata oluştu.');
+            });
+        }
+
+        function updateCartCount(count) {
+            const cartCountElement = document.querySelector('.cart-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = count;
+                cartCountElement.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+    </script>
+} 

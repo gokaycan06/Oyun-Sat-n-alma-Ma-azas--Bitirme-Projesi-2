@@ -1,0 +1,294 @@
+.wallet-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--steam-dark);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wallet-header h2 {
+    color: var(--steam-white);
+    margin: 0;
+}
+
+.current-balance {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.balance-label {
+    color: var(--steam-text);
+    font-size: 14px;
+}
+
+.balance-amount {
+    color: #a4d007;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.wallet-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.payment-methods h3,
+.amount-selection h3,
+.credit-card-section h3 {
+    color: var(--steam-white);
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.payment-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--steam-text);
+}
+
+.payment-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--steam-blue);
+}
+
+.payment-option.active {
+    background: var(--steam-blue);
+    color: var(--steam-white);
+    border-color: var(--steam-blue);
+}
+
+.payment-option i {
+    font-size: 16px;
+}
+
+.amount-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.amount-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.amount-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--steam-blue);
+}
+
+.amount-option.selected {
+    background: var(--steam-blue);
+    border-color: var(--steam-blue);
+    color: var(--steam-white);
+}
+
+.amount-option .amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--steam-white);
+}
+
+.amount-option .bonus {
+    font-size: 12px;
+    color: #a4d007;
+    margin-top: 4px;
+}
+
+.amount-option.selected .amount,
+.amount-option.selected .bonus {
+    color: var(--steam-white);
+}
+
+.custom-amount-input {
+    margin-top: 16px;
+}
+
+.custom-amount-input input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: var(--steam-white);
+    font-size: 16px;
+}
+
+.custom-amount-input input::placeholder {
+    color: var(--steam-text);
+}
+
+/* Kredi Kartı Form Stilleri */
+.credit-card-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--steam-text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: var(--steam-white);
+    font-size: 16px;
+}
+
+.form-group input::placeholder {
+    color: var(--steam-text);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--steam-blue);
+    box-shadow: 0 0 0 2px rgba(102, 192, 244, 0.2);
+}
+
+/* Dropdown option'ları için özel stiller */
+.form-group select option {
+    background: #1b2838;
+    color: var(--steam-white);
+    padding: 8px;
+}
+
+/* Dropdown açıldığında arka plan */
+.form-group select:focus option:hover,
+.form-group select:focus option:focus {
+    background: var(--steam-blue);
+    color: var(--steam-white);
+}
+
+/* Dropdown arrow rengi */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.payment-summary {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    color: var(--steam-text);
+}
+
+.summary-item.total {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 8px;
+    padding-top: 16px;
+    font-weight: bold;
+    color: var(--steam-white);
+    font-size: 18px;
+}
+
+.payment-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-load-balance {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--steam-blue);
+    color: var(--steam-white);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-load-balance:hover {
+    background: #4a9fd4;
+}
+
+.btn-load-balance i {
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .amount-options {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+} 

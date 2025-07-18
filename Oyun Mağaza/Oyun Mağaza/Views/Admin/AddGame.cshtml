@@ -1,0 +1,213 @@
+@model Oyun_Mağaza.Models.Game
+@{
+    ViewData["Title"] = "Yeni Oyun Ekle - EGCGP";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4">Yeni Oyun Ekle</h1>
+
+    <form asp-action="AddGame" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <!-- Temel Bilgiler -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Temel Bilgiler</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Oyun Adı</label>
+                            <input asp-for="Title" class="form-control" required />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Açıklama</label>
+                            <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Price" class="form-label">Fiyat (₺)</label>
+                            <input asp-for="Price" class="form-control" type="number" step="0.01" required />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ReleaseDate" class="form-label">Çıkış Tarihi</label>
+                            <input asp-for="ReleaseDate" class="form-control" type="date" required />
+                            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="MinimumAge" class="form-label">Minimum Yaş</label>
+                            <input asp-for="MinimumAge" class="form-control" type="number" required />
+                            <span asp-validation-for="MinimumAge" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CoverImage" class="form-label">Kapak Görseli</label>
+                            <input asp-for="CoverImage" class="form-control" type="file" accept="image/*" />
+                            <span asp-validation-for="CoverImage" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Geliştirici ve Yayıncı</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label asp-for="DeveloperId" class="form-label">Geliştirici</label>
+                            <select asp-for="DeveloperId" class="form-select" required>
+                                <option value="">Seçiniz...</option>
+                                @foreach (var developer in ViewBag.Developers)
+                                {
+                                    <option value="@developer.DeveloperId">@developer.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="DeveloperId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PublisherId" class="form-label">Yayıncı</label>
+                            <select asp-for="PublisherId" class="form-select" required>
+                                <option value="">Seçiniz...</option>
+                                @foreach (var publisher in ViewBag.Publishers)
+                                {
+                                    <option value="@publisher.PublisherId">@publisher.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="PublisherId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Kategoriler</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                <div class="form-check">
+                                    <input type="checkbox" name="selectedCategories" value="@category.CategoryId" class="form-check-input" />
+                                    <label class="form-check-label">@category.Name</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistem Gereksinimleri -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Minimum Sistem Gereksinimleri</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="minReqs_OS" class="form-label">İşletim Sistemi</label>
+                            <input name="minReqs.OS" id="minReqs_OS" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="minReqs_Processor" class="form-label">İşlemci</label>
+                            <input name="minReqs.Processor" id="minReqs_Processor" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="minReqs_Memory" class="form-label">Bellek</label>
+                            <input name="minReqs.Memory" id="minReqs_Memory" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="minReqs_Graphics" class="form-label">Ekran Kartı</label>
+                            <input name="minReqs.Graphics" id="minReqs_Graphics" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="minReqs_Storage" class="form-label">Depolama</label>
+                            <input name="minReqs.Storage" id="minReqs_Storage" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="minReqs_AdditionalNotes" class="form-label">Ek Notlar</label>
+                            <textarea name="minReqs.AdditionalNotes" id="minReqs_AdditionalNotes" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Önerilen Sistem Gereksinimleri</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="recReqs_OS" class="form-label">İşletim Sistemi</label>
+                            <input name="recReqs.OS" id="recReqs_OS" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="recReqs_Processor" class="form-label">İşlemci</label>
+                            <input name="recReqs.Processor" id="recReqs_Processor" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="recReqs_Memory" class="form-label">Bellek</label>
+                            <input name="recReqs.Memory" id="recReqs_Memory" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="recReqs_Graphics" class="form-label">Ekran Kartı</label>
+                            <input name="recReqs.Graphics" id="recReqs_Graphics" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="recReqs_Storage" class="form-label">Depolama</label>
+                            <input name="recReqs.Storage" id="recReqs_Storage" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="recReqs_AdditionalNotes" class="form-label">Ek Notlar</label>
+                            <textarea name="recReqs.AdditionalNotes" id="recReqs_AdditionalNotes" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Kaydet
+                </button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> İptal
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Form validation
+            $('form').validate();
+
+            // Image preview
+            $('input[type="file"]').change(function (e) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+        });
+    </script>
+} 

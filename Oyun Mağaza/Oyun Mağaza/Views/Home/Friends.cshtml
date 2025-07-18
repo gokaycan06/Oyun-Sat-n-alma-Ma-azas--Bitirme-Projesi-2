@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Arkadaşlar";
+    Layout = "_StoreLayout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/friends.css" />
+}
+
+@section Scripts {
+    <script src="~/js/friends.js"></script>
+}
+
+@Html.AntiForgeryToken()
+
+<div class="friends-container">
+    <!-- Header -->
+    <div class="friends-header">
+        <h2>Arkadaşlar</h2>
+        <div class="friends-stats">
+            <span class="online-friends">Çevrimiçi: 0</span>
+            <span class="total-friends">Toplam: 0</span>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="friends-content">
+        <!-- Arama Bölümü -->
+        <div class="friends-search">
+            <div class="search-box">
+                <input type="text" 
+                       placeholder="Kullanıcı adı ara..." 
+                       class="search-input" 
+                       id="friendSearch">
+                <button class="search-btn" onclick="searchUsers()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Arama Sonuçları -->
+        <div id="searchResults" class="search-results" style="display: none;">
+            <h3>Arama Sonuçları</h3>
+            <div id="searchResultsList" class="search-results-list">
+                <!-- Arama sonuçları buraya gelecek -->
+            </div>
+        </div>
+
+        <!-- Arkadaşlık İstekleri -->
+        <div id="friend-requests" class="friend-requests">
+            <h3>Gelen Arkadaşlık İstekleri</h3>
+            <div class="friend-requests-list">
+                <!-- Arkadaşlık istekleri buraya gelecek -->
+            </div>
+        </div>
+
+        <!-- Arkadaş Listesi -->
+        <div class="friends-list">
+            <!-- Çevrimiçi Arkadaşlar -->
+            <div class="friends-section">
+                <h3>
+                    <i class="fas fa-circle" style="color: #a4d007; margin-right: 8px;"></i>
+                    Çevrimiçi Arkadaşlar
+                </h3>
+                <div id="online-friends" class="friends-grid">
+                    <!-- Çevrimiçi arkadaşlar buraya gelecek -->
+                </div>
+            </div>
+
+            <!-- Çevrimdışı Arkadaşlar -->
+            <div class="friends-section">
+                <h3>
+                    <i class="fas fa-circle" style="color: #666; margin-right: 8px;"></i>
+                    Çevrimdışı Arkadaşlar
+                </h3>
+                <div id="offline-friends" class="friends-grid">
+                    <!-- Çevrimdışı arkadaşlar buraya gelecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

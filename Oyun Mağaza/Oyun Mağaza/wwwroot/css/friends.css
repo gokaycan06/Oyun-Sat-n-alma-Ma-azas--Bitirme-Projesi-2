@@ -1,0 +1,491 @@
+/* Ana Container */
+.friends-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background: var(--steam-dark);
+    min-height: 100vh;
+}
+
+/* Header */
+.friends-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--steam-blue);
+}
+
+.friends-header h2 {
+    color: var(--steam-white);
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.friends-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.online-friends {
+    color: #a4d007;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.total-friends {
+    color: var(--steam-text);
+    font-size: 14px;
+}
+
+/* Arama Bölümü */
+.friends-search {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    align-items: center;
+}
+
+.search-box {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+}
+
+.search-input {
+    flex: 1;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px 0 0 8px;
+    color: var(--steam-white);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--steam-blue);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.search-input::placeholder {
+    color: var(--steam-text);
+}
+
+.search-btn {
+    padding: 14px 20px;
+    background: var(--steam-blue);
+    border: none;
+    border-radius: 0 8px 8px 0;
+    color: var(--steam-white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.search-btn:hover {
+    background: #4a9fd4;
+    transform: translateY(-1px);
+}
+
+/* Arama Sonuçları */
+.search-results {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+}
+
+.search-results h3 {
+    color: var(--steam-white);
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.search-results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.search-result-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--steam-blue);
+    transform: translateY(-2px);
+}
+
+.search-result-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-result-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.search-result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.search-result-name {
+    color: var(--steam-white);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.search-result-username {
+    color: var(--steam-text);
+    font-size: 14px;
+}
+
+.btn-send-request {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--steam-blue);
+    color: var(--steam-white);
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-send-request:hover {
+    background: #4a9fd4;
+    transform: translateY(-1px);
+}
+
+/* Arkadaşlık İstekleri */
+.friend-requests {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+}
+
+.friend-requests h3 {
+    color: var(--steam-white);
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.friend-requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.friend-request-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.friend-request-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.request-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.request-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.request-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.request-name {
+    color: var(--steam-white);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.request-username {
+    color: var(--steam-text);
+    font-size: 14px;
+}
+
+.request-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-accept, .btn-reject {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-accept {
+    background: #a4d007;
+    color: #000;
+}
+
+.btn-accept:hover {
+    background: #8bb806;
+    transform: translateY(-1px);
+}
+
+.btn-reject {
+    background: #e74c3c;
+    color: var(--steam-white);
+}
+
+.btn-reject:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* Arkadaş Listesi */
+.friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.friends-section {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.friends-section h3 {
+    color: var(--steam-white);
+    margin-bottom: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.friend-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--steam-blue);
+    transform: translateY(-2px);
+}
+
+.friend-avatar {
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+
+.friend-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--steam-dark);
+}
+
+.status-indicator.online {
+    background: #a4d007;
+}
+
+.status-indicator.offline {
+    background: #666;
+}
+
+.friend-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.friend-name {
+    color: var(--steam-white);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.friend-status {
+    color: var(--steam-text);
+    font-size: 14px;
+}
+
+/* Arkadaş Dropdown Menü */
+.friend-dropdown {
+    position: relative;
+}
+
+.friend-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--steam-dark);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    min-width: 180px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.friend-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.friend-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--steam-white);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.friend-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.friend-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--steam-blue);
+}
+
+.friend-dropdown-item.danger:hover {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.friend-dropdown-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.friend-dropdown-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Mesajlar */
+.no-friends, .no-requests, .no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--steam-text);
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .friends-container {
+        padding: 16px;
+    }
+    
+    .friends-header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .friends-search {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .friends-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .friend-request-item,
+    .search-result-item {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .request-actions {
+        justify-content: center;
+    }
+} 

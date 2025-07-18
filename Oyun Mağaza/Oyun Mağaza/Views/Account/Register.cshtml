@@ -1,0 +1,106 @@
+@model Oyun_Mağaza.Models.DTOs.RegisterDTO
+@{
+    ViewData["Title"] = "Hesap Oluştur - EGCGP";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/register.css" />
+</head>
+<body>
+    <div class="background-slideshow">
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+
+    <div class="register-container">
+        <div class="register-box">
+            <div class="logo-section">
+                <h1>EGCGP</h1>
+                <p class="subtitle">Yeni Hesap Oluştur</p>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach (var modelState in ViewData.ModelState.Values)
+                        {
+                            foreach (var error in modelState.Errors)
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        }
+                    </ul>
+                </div>
+            }
+
+            <form method="post" asp-action="Register" asp-controller="Account">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Username" placeholder="Kullanıcı Adı" required
+                           value="@Model?.Username">
+                    @if (ViewData.ModelState["Username"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger">@ViewData.ModelState["Username"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="Email" placeholder="E-posta Adresi" required
+                           value="@Model?.Email">
+                    @if (ViewData.ModelState["Email"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger">@ViewData.ModelState["Email"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="Password" placeholder="Şifre" required>
+                    @if (ViewData.ModelState["Password"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger">@ViewData.ModelState["Password"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="ConfirmPassword" placeholder="Şifre Tekrar" required>
+                    @if (ViewData.ModelState["ConfirmPassword"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger">@ViewData.ModelState["ConfirmPassword"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="DisplayName" placeholder="Görünen Ad (İsteğe Bağlı)"
+                           value="@Model?.DisplayName">
+                    @if (ViewData.ModelState["DisplayName"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger">@ViewData.ModelState["DisplayName"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="terms" name="AcceptTerms" value="true" required>
+                    <label class="form-check-label" for="terms">
+                        <a href="/Terms" target="_blank">Kullanım Koşulları</a>'nı okudum ve kabul ediyorum
+                    </label>
+                    @if (ViewData.ModelState["AcceptTerms"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger d-block">@ViewData.ModelState["AcceptTerms"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Hesap Oluştur</button>
+                <div class="links mt-3">
+                    <span>Zaten hesabınız var mı?</span>
+                    <a href="/Account/Login">Giriş Yap</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

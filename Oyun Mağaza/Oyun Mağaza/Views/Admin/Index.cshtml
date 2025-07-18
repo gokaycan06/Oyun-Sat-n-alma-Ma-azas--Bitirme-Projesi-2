@@ -1,0 +1,81 @@
+@model IEnumerable<Oyun_Mağaza.Models.Game>
+@{
+    ViewData["Title"] = "Admin Paneli - EGCGP";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">Oyun Yönetimi</h1>
+        <a href="@Url.Action("AddGame")" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Yeni Oyun Ekle
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Kapak</th>
+                            <th>Başlık</th>
+                            <th>Geliştirici</th>
+                            <th>Yayıncı</th>
+                            <th>Fiyat</th>
+                            <th>Kategoriler</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var game in Model)
+                        {
+                            <tr>
+                                <td>@game.GameId</td>
+                                <td>
+                                    <img src="@game.CoverImage" alt="@game.Title" style="width: 50px; height: 50px; object-fit: cover;" />
+                                </td>
+                                <td>@game.Title</td>
+                                <td>@game.Developer?.Name</td>
+                                <td>@game.Publisher?.Name</td>
+                                <td>@(game.Price == 0 ? "Ücretsiz" : $"₺{game.Price:N2}")</td>
+                                <td>
+                                    @string.Join(", ", game.GameCategories.Select(gc => gc.Category.Name))
+                                </td>
+                                <td>
+                                    <span class="badge @(game.IsActive ? "bg-success" : "bg-danger")">
+                                        @(game.IsActive ? "Aktif" : "Pasif")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="@Url.Action("EditGame", new { id = game.GameId })" class="btn btn-sm btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteGame(@game.GameId)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function deleteGame(id) {
+            if (confirm('Bu oyunu silmek istediğinizden emin misiniz?')) {
+                $.post('@Url.Action("DeleteGame")', { id: id }, function () {
+                    location.reload();
+                });
+            }
+        }
+    </script>
+} 

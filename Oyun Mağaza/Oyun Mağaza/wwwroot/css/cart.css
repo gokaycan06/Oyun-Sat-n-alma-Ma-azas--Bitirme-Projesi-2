@@ -1,0 +1,374 @@
+/* =================================
+   GENEL SAYFA ve GRID YAPISI
+   ================================= */
+body {
+    background-color: #1b2838;
+    color: #c7d5e0;
+    min-height: 100vh;
+}
+
+.cart-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    min-height: calc(100vh - 80px);
+}
+
+.cart-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+    min-height: calc(100vh - 120px);
+}
+
+/* =================================
+   SOL TARAF (ÜRÜN LİSTESİ)
+   ================================= */
+.cart-items {
+    /* Scroll'u tamamen kaldırıyoruz */
+    height: auto;
+    overflow: visible;
+}
+
+.cart-items__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-items__header h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.cart-items__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Scroll'u kaldırıyoruz - oyunlar doğrudan aşağıya sıralanacak */
+    height: auto;
+    overflow: visible;
+}
+
+/* =================================
+   ORTAK KART YAPISI (`item-card`)
+   ================================= */
+.item-card {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.item-card:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Kartın Bölümleri */
+.item-card__image {
+    width: 150px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+.item-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-card__details {
+    min-width: 0; /* grid içinde taşmayı önler */
+}
+.item-card__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+.item-card__meta {
+    font-size: 0.9rem;
+    color: #b8b6b4;
+    margin-bottom: 10px;
+}
+.item-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.item-card__price {
+    text-align: right;
+}
+.item-card__price .original {
+    font-size: 0.9rem;
+    color: #b8b6b4;
+    text-decoration: line-through;
+}
+.item-card__price .current {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.item-card__price .free {
+    color: #a4d007;
+}
+
+.item-card__remove-btn {
+    margin-top: 10px;
+    background: transparent;
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.item-card__remove-btn:hover {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+
+/* =================================
+   BUNDLE KARTINA ÖZEL STİLLER
+   ================================= */
+.item-card--bundle {
+    border-color: #ff6b6b;
+}
+.item-card--bundle .item-card__title {
+    color: #ffcdd2;
+}
+.item-card--bundle .item-card__meta {
+    color: #ff8a80;
+}
+.tag--bundle {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff8a80;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+.bundle-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #ff6b6b;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Navbar sepet dropdown'ındaki bundle badge */
+.cart-item-bundle-badge {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff8a80;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    display: block;
+    margin-top: 4px;
+}
+
+/* =================================
+   DLC KARTINA ÖZEL STİLLER
+   ================================= */
+.item-card--dlc {
+    border-color: #4fc3f7;
+}
+.item-card--dlc .item-card__title {
+    color: #b3e5fc;
+}
+.item-card--dlc .item-card__meta {
+    color: #81d4fa;
+}
+.tag--dlc {
+    background: rgba(79, 195, 247, 0.2);
+    color: #81d4fa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+.dlc-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #4fc3f7;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Navbar sepet dropdown'ındaki DLC badge */
+.cart-item-dlc-badge {
+    background: rgba(79, 195, 247, 0.2);
+    color: #81d4fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    display: block;
+    margin-top: 4px;
+}
+
+/* =================================
+   SAĞ TARAF (SİPARİŞ ÖZETİ)
+   ================================= */
+.summary {
+    /* Sağ taraf da normal akışta */
+    height: auto;
+    overflow: visible;
+}
+
+.summary-card {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    /* Scroll'u kaldırdık - artık normal akışta */
+    height: auto;
+    overflow: visible;
+}
+
+.summary-card h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 0 20px 0;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.summary-stats {
+    margin-bottom: 25px;
+}
+
+.summary-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.summary-stat:last-child {
+    border-bottom: none;
+}
+
+.summary-stat__label {
+    color: #b8b6b4;
+    font-size: 0.95rem;
+}
+
+.summary-stat__value {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.summary-stat__value.highlight {
+    color: #a4d007;
+    font-size: 1.1rem;
+}
+
+.summary-stat__value.discount {
+    color: #ff6b6b;
+}
+
+.summary-total {
+    background: rgba(164, 208, 7, 0.1);
+    border: 1px solid rgba(164, 208, 7, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.summary-total__label {
+    color: #a4d007;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.summary-total__amount {
+    color: #a4d007;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.summary-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-checkout {
+    background: linear-gradient(135deg, #a4d007 0%, #8bc34a 100%);
+    color: #1b2838;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-checkout:hover {
+    background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(164, 208, 7, 0.3);
+}
+
+.btn-continue {
+    background: transparent;
+    color: #b8b6b4;
+    border: 1px solid rgba(184, 182, 180, 0.3);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-continue:hover {
+    background: rgba(184, 182, 180, 0.1);
+    color: #fff;
+    border-color: rgba(184, 182, 180, 0.5);
+}
+
+/* =================================
+   RESPONSIVE
+   ================================= */
+@media (max-width: 992px) {
+    .cart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .item-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .item-card__image {
+        margin: 0 auto;
+    }
+    .item-card__price {
+        text-align: center;
+    }
+} 

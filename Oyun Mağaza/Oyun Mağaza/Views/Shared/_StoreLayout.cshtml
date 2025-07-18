@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EGCGP</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/store.css?v=@DateTime.Now.Ticks" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    @Html.AntiForgeryToken()
+    
+    <!-- Steam Navbar -->
+    <nav class="steam-navbar">
+        <div class="steam-navbar-left">
+            <span class="steam-logo">EGCGP</span>
+            <a href="/Home/Index" class="steam-tab">MAĞAZA</a>
+            <a href="/Home/Library" class="steam-tab">KÜTÜPHANE</a>
+            <a href="/Home/Friends" class="steam-tab">ARKADAŞLAR</a>
+            <a href="/Home/ProfileSettings" class="steam-tab">@ViewBag.UserDisplayName?.ToUpper()</a>
+        </div>
+        <div class="steam-navbar-right">
+            <!-- Bildirimler -->
+            <div class="steam-notifications">
+                <i class="fas fa-bell" onclick="toggleNotifications()"></i>
+                <span class="notification-badge" id="notificationBadge">0</span>
+                <div class="notifications-dropdown" id="notificationsMenu">
+                    <div class="notifications-header">
+                        <h4>Bildirimler</h4>
+                        <button class="mark-all-read" onclick="markAllNotificationsAsRead()">Tümünü Okundu İşaretle</button>
+                    </div>
+                    <div class="notifications-list" id="notificationsList">
+                        <!-- Bildirimler buraya dinamik olarak yüklenecek -->
+                    </div>
+                    <div class="notifications-footer">
+                        <span>Tüm bildirimleri görüntüle</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sepet -->
+            <div class="steam-cart">
+                <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+                <div class="cart-dropdown" id="cartMenu">
+                    <div class="cart-header">
+                        <h4>Sepetim</h4>
+                        <span class="cart-item-count" id="cartItemCount">0 ürün</span>
+                    </div>
+                    <div class="cart-items" id="cartItems">
+                        <!-- Sepet öğeleri buraya dinamik olarak yüklenecek -->
+                    </div>
+                    <div class="cart-footer">
+                        <div class="cart-total">
+                            <span>Toplam:</span>
+                            <span class="cart-total-price" id="cartTotalPrice">₺0.00</span>
+                        </div>
+                        <button class="btn-checkout" onclick="goToCart()">Sepete Git</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kullanıcı Bilgileri -->
+            <div class="steam-user-info">
+                <div class="steam-user-details">
+                    <span class="steam-user-name">@ViewBag.UserDisplayName</span>
+                    <span class="steam-user-balance">₺@ViewBag.WalletBalance</span>
+                </div>
+                <div class="steam-user-dropdown">
+                    <img src="@ViewBag.UserProfilePicture" class="steam-user-avatar" alt="Avatar" onclick="toggleUserMenu()" />
+                    <div class="steam-user-menu" id="userMenu">
+                        <div class="menu-item" onclick="navigateToProfile()">
+                            <i class="fas fa-user"></i>
+                            <span>Profil</span>
+                        </div>
+                        <div class="menu-item" onclick="navigateToWallet()">
+                            <i class="fas fa-wallet"></i>
+                            <span>Bakiye Yükle</span>
+                        </div>
+                        <div class="menu-separator"></div>
+                        <div class="menu-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Çıkış Yap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Kullanıcı menüsü toggle fonksiyonu
+        function toggleUserMenu() {
+            const menu = document.getElementById('userMenu');
+            if (menu) {
+                menu.classList.toggle('active');
+                console.log('Menü toggle edildi:', menu.classList.contains('active'));
+            }
+        }
+
+        // Bildirimler toggle fonksiyonu
+        function toggleNotifications() {
+            const menu = document.getElementById('notificationsMenu');
+            if (menu) {
+                menu.classList.toggle('active');
+                if (menu.classList.contains('active')) {
+                    loadNotifications();
+                }
+            }
+        }
+
+        // Bildirimleri yükle
+        function loadNotifications() {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Notification/GetNotifications', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateNotificationsList(data.notifications);
+                    updateNotificationBadge(data.count);
+                }
+            })
+            .catch(error => {
+                console.error('Bildirimler yüklenirken hata:', error);
+            });
+        }
+
+        // Bildirim listesini güncelle
+        function updateNotificationsList(notifications) {
+            const list = document.getElementById('notificationsList');
+            if (!list) return;
+
+            if (notifications.length === 0) {
+                list.innerHTML = '<div class="no-notifications">Bildiriminiz yok</div>';
+                return;
+            }
+
+            list.innerHTML = '';
+            notifications.forEach(notification => {
+                const notificationItem = document.createElement('div');
+                notificationItem.className = 'notification-item';
+                notificationItem.onclick = () => markNotificationAsRead(notification.id, notification.type, notification.relatedId);
+                
+                let icon = 'fas fa-bell';
+                if (notification.type === 'message') {
+                    icon = 'fas fa-envelope';
+                } else if (notification.type === 'friend_request') {
+                    icon = 'fas fa-user-plus';
+                }
+
+                notificationItem.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-message">${notification.message}</div>
+                        <div class="notification-time">${notification.createdAt}</div>
+                    </div>
+                `;
+                
+                list.appendChild(notificationItem);
+            });
+        }
+
+        // Bildirim sayısını güncelle
+        function updateNotificationBadge(count) {
+            const badge = document.getElementById('notificationBadge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+
+        // Bildirimi okundu olarak işaretle
+        function markNotificationAsRead(notificationId, type, relatedId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Notification/MarkAsRead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ notificationId: notificationId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Bildirimi listeden kaldır
+                    const notificationItem = document.querySelector(`[onclick*="${notificationId}"]`);
+                    if (notificationItem) {
+                        notificationItem.remove();
+                    }
+                    
+                    // Badge'i güncelle
+                    const badge = document.getElementById('notificationBadge');
+                    if (badge) {
+                        const currentCount = parseInt(badge.textContent);
+                        if (currentCount > 0) {
+                            badge.textContent = currentCount - 1;
+                            if (currentCount - 1 === 0) {
+                                badge.style.display = 'none';
+                            }
+                        }
+                    }
+
+                    // Bildirim tipine göre yönlendirme
+                    if (type === 'message' && relatedId) {
+                        window.location.href = '/Message/Chat';
+                    } else if (type === 'friend_request') {
+                        window.location.href = '/Home/Friends';
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Bildirim işaretlenirken hata:', error);
+            });
+        }
+
+        // Tüm bildirimleri okundu olarak işaretle
+        function markAllNotificationsAsRead() {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Notification/MarkAllAsRead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Bildirim listesini temizle
+                    const list = document.getElementById('notificationsList');
+                    if (list) {
+                        list.innerHTML = '<div class="no-notifications">Bildiriminiz yok</div>';
+                    }
+                    
+                    // Badge'i gizle
+                    const badge = document.getElementById('notificationBadge');
+                    if (badge) {
+                        badge.textContent = '0';
+                        badge.style.display = 'none';
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Bildirimler işaretlenirken hata:', error);
+            });
+        }
+
+        // Sayfa yüklendiğinde bildirimleri kontrol et
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNotifications();
+            
+            // Sepet sayısını yükle
+            fetch('/Cart/GetCartCount', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateCartBadge(data.count);
+                }
+            })
+            .catch(error => {
+                console.error('Sepet sayısı alınamadı:', error);
+            });
+            
+            // Her 30 saniyede bir bildirimleri kontrol et
+            setInterval(loadNotifications, 30000);
+        });
+
+        // Sepet toggle fonksiyonu
+        function toggleCart() {
+            const menu = document.getElementById('cartMenu');
+            if (menu) {
+                menu.classList.toggle('active');
+                if (menu.classList.contains('active')) {
+                    loadCartItems();
+                }
+            }
+        }
+
+        // Sepet öğelerini yükle
+        function loadCartItems() {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Cart/GetCartItems', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateCartItems(data.items, data.totalPrice, data.itemCount);
+                }
+            })
+            .catch(error => {
+                console.error('Sepet öğeleri yüklenirken hata:', error);
+            });
+        }
+
+        // Sepet öğelerini güncelle
+        function updateCartItems(items, totalPrice, itemCount) {
+            const cartItems = document.getElementById('cartItems');
+            const cartItemCount = document.getElementById('cartItemCount');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
+            const cartBadge = document.getElementById('cartBadge');
+
+            if (!cartItems) return;
+
+            // Sepet sayısını güncelle
+            if (cartBadge) {
+                cartBadge.textContent = itemCount;
+                cartBadge.style.display = itemCount > 0 ? 'block' : 'none';
+            }
+
+            if (cartItemCount) {
+                cartItemCount.textContent = itemCount + ' ürün';
+            }
+
+            if (cartTotalPrice) {
+                cartTotalPrice.textContent = '₺' + totalPrice.toFixed(2);
+            }
+
+            // Sepet öğelerini temizle
+            cartItems.innerHTML = '';
+
+            if (items.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart-message">Sepetiniz boş</div>';
+                return;
+            }
+
+            // Sepet öğelerini ekle
+            items.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                
+                let removeButton = '';
+                if (item.itemType === 'Bundle') {
+                    removeButton = `<button class="cart-item-remove" onclick="removeBundleFromCartDropdown(${item.bundleId})" title="Sepetten kaldır">×</button>`;
+                } else {
+                    removeButton = `<button class="cart-item-remove" onclick="removeFromCartDropdown(${item.gameId})" title="Sepetten kaldır">×</button>`;
+                }
+                
+                cartItem.innerHTML = `
+                    <img src="${item.coverImage}" alt="${item.title}" class="cart-item-image" onerror="this.src='/images/games/default-cover.jpg'">
+                    <div class="cart-item-info">
+                        <span class="cart-item-title" title="${item.title}">${item.title}</span>
+                        <span class="cart-item-price">₺${item.price.toFixed(2)}</span>
+                        ${item.itemType === 'Bundle' ? `<span class="cart-item-bundle-badge">Bundle (${item.gameCount} oyun)</span>` : ''}
+                    </div>
+                    ${removeButton}
+                `;
+                cartItems.appendChild(cartItem);
+            });
+        }
+
+        // Sepet dropdown'dan ürün kaldır
+        function removeFromCartDropdown(gameId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Cart/RemoveFromCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ gameId: gameId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    
+                    // Sepet öğelerini yeniden yükle
+                    loadCartItems();
+                    
+                    // Başarı mesajı göster
+                    showNotification('Oyun sepetten kaldırıldı', 'success');
+                } else {
+                    showNotification(data.message || 'Bir hata oluştu', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                showNotification('Bir hata oluştu', 'error');
+            });
+        }
+
+        // Sepet dropdown'dan paket kaldır
+        function removeBundleFromCartDropdown(bundleId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Cart/RemoveBundleFromCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ bundleId: bundleId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    
+                    // Sepet öğelerini yeniden yükle
+                    loadCartItems();
+                    
+                    // Başarı mesajı göster
+                    showNotification('Paket sepetten kaldırıldı', 'success');
+                } else {
+                    showNotification(data.message || 'Bir hata oluştu', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                showNotification('Bir hata oluştu', 'error');
+            });
+        }
+
+        // Sepet sayısını güncelleme
+        function updateCartBadge(count) {
+            const badge = document.getElementById('cartBadge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+
+        // Debug: Sepet verilerini kontrol et
+        function debugCart() {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Cart/DebugCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Sepet Debug Bilgileri:', data.debugInfo);
+                    alert('Sepet debug bilgileri console\'da görüntüleniyor. F12 tuşuna basarak Developer Tools\'u açın.');
+                } else {
+                    alert('Hata: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Debug hatası:', error);
+                alert('Debug hatası: ' + error.message);
+            });
+        }
+
+        // Sepeti tamamen temizle
+        function clearAllCart() {
+            if (confirm('Sepeti tamamen temizlemek istediğinizden emin misiniz?')) {
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+                
+                fetch('/Cart/ClearAllCart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token || ''
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Sepet sayısını güncelle
+                        updateCartBadge(0);
+                        
+                        // Sepet öğelerini temizle
+                        const cartItems = document.getElementById('cartItems');
+                        if (cartItems) {
+                            cartItems.innerHTML = '<div class="empty-cart-message">Sepetiniz boş</div>';
+                        }
+                        
+                        // Sepet dropdown'ını kapat
+                        const cartMenu = document.getElementById('cartMenu');
+                        if (cartMenu) {
+                            cartMenu.classList.remove('active');
+                        }
+                        
+                        showNotification('Sepet tamamen temizlendi', 'success');
+                    } else {
+                        showNotification(data.message || 'Bir hata oluştu', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Hata:', error);
+                    showNotification('Bir hata oluştu', 'error');
+                });
+            }
+        }
+
+        // Bildirim gösterme fonksiyonu
+        function showNotification(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `notification-toast notification-${type}`;
+            toast.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-message">${message}</span>
+                    <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // 3 saniye sonra otomatik kaldır
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 3000);
+        }
+
+        // Sepet sayfasına git
+        function goToCart() {
+            window.location.href = '/Cart/Index';
+        }
+
+        // Satın alma işlemi
+        function checkout() {
+            alert('Satın alma işlemi başlatılıyor...');
+            // Burada ödeme sayfasına yönlendirme yapılacak
+        }
+
+        // Sayfa herhangi bir yerine tıklandığında menüleri kapat
+        document.addEventListener('click', function(event) {
+            const userDropdown = document.querySelector('.steam-user-dropdown');
+            const userMenu = document.getElementById('userMenu');
+            const notificationsDropdown = document.querySelector('.steam-notifications');
+            const notificationsMenu = document.getElementById('notificationsMenu');
+            const cartDropdown = document.querySelector('.steam-cart');
+            const cartMenu = document.getElementById('cartMenu');
+            
+            // Kullanıcı menüsü
+            if (userDropdown && userMenu && !userDropdown.contains(event.target)) {
+                userMenu.classList.remove('active');
+            }
+            
+            // Bildirimler menüsü
+            if (notificationsDropdown && notificationsMenu && !notificationsDropdown.contains(event.target)) {
+                notificationsMenu.classList.remove('active');
+            }
+            
+            // Sepet menüsü
+            if (cartDropdown && cartMenu && !cartDropdown.contains(event.target)) {
+                cartMenu.classList.remove('active');
+            }
+        });
+
+        // Menü item'larına tıklama fonksiyonları
+        function navigateToProfile() {
+            window.location.href = '/Home/ProfileSettings';
+        }
+
+        function navigateToWallet() {
+            window.location.href = '/Home/Wallet';
+        }
+
+        function logout() {
+            // CSRF token'ı al
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Account/Logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(() => {
+                window.location.href = '/Account/Login';
+            })
+            .catch(() => {
+                window.location.href = '/Account/Login';
+            });
+        }
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> 

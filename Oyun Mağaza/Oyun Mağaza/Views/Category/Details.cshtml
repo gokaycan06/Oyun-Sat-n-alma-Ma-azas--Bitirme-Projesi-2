@@ -1,0 +1,89 @@
+@model List<Oyun_Mağaza.Models.Game>
+@{
+    ViewData["Title"] = ViewBag.CategoryName + " Oyunları";
+    Layout = "_StoreLayout";
+}
+
+<div class="container mt-4">
+    <h2>@ViewBag.CategoryName Oyunları</h2>
+    @if (!string.IsNullOrEmpty(ViewBag.CategoryDescription))
+    {
+        <p class="text-muted">@ViewBag.CategoryDescription</p>
+    }
+    <div class="browse-games-grid">
+        @if (Model.Count == 0)
+        {
+            <div class="alert alert-info">Bu kategoride henüz oyun yok.</div>
+        }
+        else
+        {
+            @foreach (var game in Model)
+            {
+                <div class="browse-game-card">
+                    <a href="/Game/Details/@game.GameId" class="browse-game-cover-link">
+                        <img src="/games/@game.CoverImage" alt="@game.Title" class="browse-game-cover">
+                    </a>
+                    <div class="browse-game-info">
+                        <h5 class="browse-game-title">@game.Title</h5>
+                        <div class="browse-game-price">
+                            @if (game.Price == 0)
+                            {
+                                <span class="free-text">Ücretsiz</span>
+                            }
+                            else
+                            {
+                                <span>₺@game.Price.ToString("F2")</span>
+                            }
+                        </div>
+                        <div class="browse-game-actions">
+                            <button class="btn-buy-small" onclick="addToCart(@game.GameId)">Sepete Ekle</button>
+                            <button class="btn-wishlist-small" onclick="addToWishlist(@game.GameId)">❤</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function addToCart(gameId) {
+            // Sepete ekleme işlemi
+            fetch('/Cart/AddToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ gameId: gameId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    alert('Oyun sepete eklendi!');
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Bir hata oluştu.');
+            });
+        }
+
+        // Sepet sayısını güncelleme
+        function updateCartBadge(count) {
+            const badge = document.querySelector('.cart-badge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+        function addToWishlist(gameId) {
+            alert('Oyun istek listesine ekleniyor... Game ID: ' + gameId);
+        }
+    </script>
+} 

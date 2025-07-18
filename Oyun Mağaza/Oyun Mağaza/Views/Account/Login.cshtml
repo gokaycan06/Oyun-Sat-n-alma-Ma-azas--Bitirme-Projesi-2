@@ -1,0 +1,85 @@
+@model Oyun_Mağaza.Models.DTOs.LoginDTO
+@{
+    ViewData["Title"] = "Giriş Yap - EGCGP";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+<body>
+    <div class="background-slideshow">
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-section">
+                <h1>EGCGP</h1>
+                <p class="subtitle">Ertuğrul Gökay Can Oyun Platformu</p>
+            </div>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach (var modelState in ViewData.ModelState.Values)
+                        {
+                            foreach (var error in modelState.Errors)
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        }
+                    </ul>
+                </div>
+            }
+
+            <form method="post" asp-action="Login" asp-controller="Account">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Username" placeholder="Kullanıcı Adı veya E-posta" required
+                           value="@Model?.Username">
+                    @if (ViewData.ModelState["Username"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger">@ViewData.ModelState["Username"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="Password" placeholder="Şifre" required>
+                    @if (ViewData.ModelState["Password"]?.Errors.Count > 0)
+                    {
+                        <small class="text-danger">@ViewData.ModelState["Password"].Errors.First().ErrorMessage</small>
+                    }
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" name="RememberMe" value="true">
+                    <label class="form-check-label" for="rememberMe">Beni Hatırla</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+                <div class="links mt-3">
+                    <a href="/Account/ForgotPassword">Şifremi Unuttum</a>
+                    <span class="separator">|</span>
+                    <a href="/Account/Register">Hesap Oluştur</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

@@ -1,0 +1,148 @@
+/* Admin Panel Styles */
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    margin-top: 60px; /* Steam navbar için üst boşluk */
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: calc(100vh - 60px); /* Steam navbar yüksekliğini çıkar */
+    background: #343a40;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #2c3136;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    color: #343a40;
+    background: #fff;
+}
+
+#sidebar ul li.active > a {
+    color: #fff;
+    background: #2c3136;
+}
+
+#sidebar ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #2c3136;
+}
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: calc(100vh - 60px); /* Steam navbar yüksekliğini çıkar */
+    transition: all 0.3s;
+}
+
+/* Navbar Styles */
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+/* Card Styles */
+.card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Table Styles */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    border-top: none;
+    background-color: #f8f9fa;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Button Styles */
+.btn-group {
+    gap: 5px;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.5em 0.75em;
+}
+
+/* Steam Navbar Admin Panel Uyumluluğu */
+.steam-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+    
+    .wrapper {
+        margin-top: 60px;
+    }
+} 

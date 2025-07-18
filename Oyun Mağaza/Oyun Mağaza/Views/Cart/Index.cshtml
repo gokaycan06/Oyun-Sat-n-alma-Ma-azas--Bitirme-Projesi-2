@@ -1,0 +1,296 @@
+@using System.Linq
+@using Oyun_Mağaza.Models
+
+@{
+    ViewData["Title"] = "Sepetim";
+    Layout = "_StoreLayout";
+    
+    // Sepet istatistiklerini hesapla
+    var cartItems = ViewBag.CartItems as List<OrderItem> ?? new List<OrderItem>();
+    var gameCount = cartItems.Count(item => item.Game != null);
+    var bundleCount = cartItems.Count(item => item.Bundle != null);
+    var dlcCount = cartItems.Count(item => item.DLC != null);
+    var totalItems = gameCount + bundleCount + dlcCount;
+    
+    // Toplam fiyat ve indirim hesaplamaları
+    var totalPrice = ViewBag.TotalPrice ?? 0m;
+    var originalTotal = cartItems.Sum(item => 
+    {
+        if (item.Bundle != null)
+        {
+            return item.Bundle.Price;
+        }
+        else if (item.Game != null)
+        {
+            return item.Game.Price;
+        }
+        else if (item.DLC != null)
+        {
+            return item.DLC.Price;
+        }
+        return 0m;
+    });
+    var totalDiscount = originalTotal - totalPrice;
+    var discountPercentage = originalTotal > 0 ? (totalDiscount / originalTotal) * 100 : 0;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cart.css?v=@DateTime.Now.Ticks" />
+}
+
+<div class="cart-container">
+    <div class="cart-grid">
+        <!-- SOL SÜTUN: Ürünler -->
+        <div class="cart-items">
+            <div class="cart-items__header">
+                <h1>Sepetim</h1>
+                @if (cartItems.Count > 0)
+                {
+                    <button class="item-card__remove-btn" onclick="clearCart()">
+                        <i class="fas fa-trash"></i> Hepsini Kaldır
+                    </button>
+                }
+            </div>
+
+            @if (cartItems.Count == 0)
+            {
+                <p>Sepetinizde henüz ürün bulunmuyor.</p>
+            }
+            else
+            {
+                <div class="cart-items__list">
+                    @foreach (var item in cartItems)
+                    {
+                        if (item.Bundle != null)
+                        {
+                            var bundle = item.Bundle;
+                            var bundleGames = bundle.Games?.ToList() ?? new List<Game>();
+                            <div class="item-card item-card--bundle">
+                                <div class="item-card__image">
+                                    <img src="@(bundleGames.Any() ? $"/games/{bundleGames.First().CoverImage}" : "/games/default-cover.jpg")" alt="@bundle.Name">
+                                    <div class="bundle-badge">BUNDLE</div>
+                                </div>
+                                <div class="item-card__details">
+                                    <h3 class="item-card__title">@bundle.Name</h3>
+                                    <p class="item-card__meta">@(bundleGames.Count) oyun içeren paket.</p>
+                                    <div class="item-card__tags">
+                                        @foreach (var gameInBundle in bundleGames.Take(4))
+                                        {
+                                            <span class="tag--bundle">@gameInBundle.Title</span>
+                                        }
+                                        @if (bundleGames.Count > 4)
+                                        {
+                                            <span class="tag--bundle">+@(bundleGames.Count - 4)</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="item-card__price">
+                                    @if (bundle.DiscountPercentage > 0)
+                                    {
+                                        <div class="original">₺@bundle.Price.ToString("F2")</div>
+                                        <div class="current">₺@item.Price.ToString("F2")</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="current">₺@item.Price.ToString("F2")</div>
+                                    }
+                                    <button class="item-card__remove-btn" onclick="removeBundleFromCart(@bundle.BundleId)">Kaldır</button>
+                                </div>
+                            </div>
+                        }
+                        else if (item.DLC != null)
+                        {
+                            var dlc = item.DLC;
+                            <div class="item-card item-card--dlc">
+                                <div class="item-card__image">
+                                    <img src="/games/@dlc.CoverImage" alt="@dlc.Name">
+                                    <div class="dlc-badge">DLC</div>
+                                </div>
+                                <div class="item-card__details">
+                                    <h3 class="item-card__title">@dlc.Name</h3>
+                                    <p class="item-card__meta">@dlc.Game?.Title için DLC</p>
+                                    <div class="item-card__tags">
+                                        <span class="tag--dlc">DLC</span>
+                                        @if (!string.IsNullOrEmpty(dlc.Description))
+                                        {
+                                            <span class="tag--dlc">@(dlc.Description.Length > 50 ? dlc.Description.Substring(0, 50) + "..." : dlc.Description)</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="item-card__price">
+                                    @if (item.Price == 0)
+                                    {
+                                        <div class="current free">Ücretsiz</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="current">₺@item.Price.ToString("F2")</div>
+                                    }
+                                    <button class="item-card__remove-btn" onclick="removeDLCFromCart(@dlc.DLCId)">Kaldır</button>
+                                </div>
+                            </div>
+                        }
+                        else if (item.Game != null)
+                        {
+                            var game = item.Game;
+                            <div class="item-card">
+                                <div class="item-card__image">
+                                    <img src="/games/@game.CoverImage" alt="@game.Title">
+                                </div>
+                                <div class="item-card__details">
+                                    <h3 class="item-card__title">@game.Title</h3>
+                                    <p class="item-card__meta">@game.Developer?.Name</p>
+                                    <div class="item-card__tags">
+                                        @if (game.GameCategories != null)
+                                        {
+                                            foreach (var gc in game.GameCategories.Take(3))
+                                            {
+                                                <span>@gc.Category.Name</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="item-card__price">
+                                    @if (item.Price == 0)
+                                    {
+                                        <div class="current free">Ücretsiz</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="current">₺@item.Price.ToString("F2")</div>
+                                    }
+                                    <button class="item-card__remove-btn" onclick="removeFromCart(@game.GameId)">Kaldır</button>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- SAĞ SÜTUN: Özet -->
+        @if (cartItems.Count > 0)
+        {
+            <div class="summary">
+                <div class="summary-card">
+                    <h3>🛒 Sipariş Özeti</h3>
+                    
+                    <div class="summary-stats">
+                        <div class="summary-stat">
+                            <span class="summary-stat__label">Toplam Ürün:</span>
+                            <span class="summary-stat__value">@totalItems adet</span>
+                        </div>
+                        
+                        @if (gameCount > 0)
+                        {
+                            <div class="summary-stat">
+                                <span class="summary-stat__label">🎮 Oyun:</span>
+                                <span class="summary-stat__value">@gameCount adet</span>
+                            </div>
+                        }
+                        
+                        @if (bundleCount > 0)
+                        {
+                            <div class="summary-stat">
+                                <span class="summary-stat__label">📦 Bundle:</span>
+                                <span class="summary-stat__value">@bundleCount adet</span>
+                            </div>
+                        }
+                        
+                        @if (dlcCount > 0)
+                        {
+                            <div class="summary-stat">
+                                <span class="summary-stat__label">🔧 DLC:</span>
+                                <span class="summary-stat__value">@dlcCount adet</span>
+                            </div>
+                        }
+                        
+                        @if (totalDiscount > 0)
+                        {
+                            <div class="summary-stat">
+                                <span class="summary-stat__label">💰 Toplam Karınız:</span>
+                                <span class="summary-stat__value discount">-₺@totalDiscount.ToString("F2")</span>
+                            </div>
+                            
+                            <div class="summary-stat">
+                                <span class="summary-stat__label">📊 İndirim Oranı:</span>
+                                <span class="summary-stat__value highlight">%@discountPercentage.ToString("F1")</span>
+                            </div>
+                        }
+                    </div>
+                    
+                    <div class="summary-total">
+                        <div class="summary-total__label">Ödenecek Tutar</div>
+                        <div class="summary-total__amount">₺@totalPrice.ToString("F2")</div>
+                    </div>
+                    
+                    <div class="summary-actions">
+                        <button class="btn-checkout" onclick="checkout()">
+                            🚀 Satın Al
+                        </button>
+                        <button class="btn-continue" onclick="window.location.href='/'">
+                            ← Alışverişe Devam Et
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function removeFromCart(gameId) {
+             if (confirm('Bu ürünü sepetten kaldırmak istediğinizden emin misiniz?')) {
+                fetch('/Cart/RemoveFromCart', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || '' },
+                    body: JSON.stringify({ gameId: gameId })
+                }).then(res => res.json()).then(data => { if(data.success) location.reload(); else alert(data.message); });
+            }
+        }
+        function removeBundleFromCart(bundleId) {
+            if (confirm('Bu bundle\'ı sepetten kaldırmak istediğinizden emin misiniz?')) {
+                fetch('/Cart/RemoveBundleFromCart', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || '' },
+                    body: JSON.stringify({ bundleId: bundleId })
+                }).then(res => res.json()).then(data => { if(data.success) location.reload(); else alert(data.message); });
+            }
+        }
+        function removeDLCFromCart(dlcId) {
+            if (confirm('Bu DLC\'yi sepetten kaldırmak istediğinizden emin misiniz?')) {
+                fetch('/Cart/RemoveDLCFromCart', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || '' },
+                    body: JSON.stringify({ dlcId: dlcId })
+                }).then(res => res.json()).then(data => { if(data.success) location.reload(); else alert(data.message); });
+            }
+        }
+        function clearCart() {
+            if (confirm('Sepetinizdeki tüm ürünleri kaldırmak istediğinizden emin misiniz?')) {
+                fetch('/Cart/ClearCart', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || '' }
+                }).then(res => res.json()).then(data => { if(data.success) location.reload(); else alert(data.message); });
+            }
+        }
+        function checkout() {
+            if (confirm('Satın alma işlemini gerçekleştirmek istediğinizden emin misiniz?')) {
+                fetch('/Cart/Checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || '' }
+                }).then(res => res.json()).then(data => { 
+                    if(data.success) {
+                        alert(data.message);
+                        location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                }).catch(error => {
+                    alert('Satın alma işlemi sırasında bir hata oluştu.');
+                });
+            }
+        }
+    </script>
+} 

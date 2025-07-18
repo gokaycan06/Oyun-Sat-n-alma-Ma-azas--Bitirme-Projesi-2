@@ -1,0 +1,3380 @@
+/* Steam Renkleri */
+:root {
+    --steam-dark: #171a21;
+    --steam-darker: #1b2838;
+    --steam-blue: #66c0f4;
+    --steam-text: #b8b6b4;
+    --steam-white: #ffffff;
+}
+
+/* Arka plan rengi - Steam ile aynı */
+body {
+    background-color: var(--steam-darker);
+    color: var(--steam-text);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 64px 0 0 0; /* Navbar yüksekliği kadar üst padding */
+}
+
+/* Steam Navbar */
+.steam-navbar {
+    background-color: var(--steam-dark);
+    color: var(--steam-text);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    height: 64px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.steam-navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.steam-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Bildirimler */
+.steam-notifications {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.steam-notifications:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.steam-notifications i {
+    font-size: 20px;
+    color: var(--steam-text);
+    transition: color 0.2s ease;
+}
+
+.steam-notifications:hover i {
+    color: var(--steam-white);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 12px;
+    min-width: 18px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.notifications-dropdown {
+    position: fixed;
+    top: 70px;
+    right: 200px;
+    background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+    min-width: 320px;
+    max-width: 400px;
+    max-height: 500px;
+    z-index: 99999;
+    display: none;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.notifications-dropdown.active {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notifications-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 12px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.notifications-header h4 {
+    margin: 0;
+    color: var(--steam-white);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.mark-all-read {
+    background: linear-gradient(135deg, #66c0f4, #4a9eff);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mark-all-read:hover {
+    background: linear-gradient(135deg, #4a9eff, #66c0f4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 192, 244, 0.4);
+}
+
+.notifications-list {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.notifications-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.notifications-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.notifications-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.notifications-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 20px;
+    color: var(--steam-text);
+    transition: all 0.3s ease;
+    font-size: 14px;
+    border-left: 3px solid transparent;
+    position: relative;
+}
+
+.notification-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: #66c0f4;
+    transform: translateX(2px);
+}
+
+.notification-item.unread {
+    background: rgba(102, 192, 244, 0.1);
+    border-left-color: #66c0f4;
+}
+
+.notification-item.unread::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #66c0f4;
+    border-radius: 50%;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+.notification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(102, 192, 244, 0.2);
+    flex-shrink: 0;
+}
+
+.notification-icon i {
+    color: #66c0f4;
+    font-size: 14px;
+}
+
+.notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-title {
+    color: var(--steam-white);
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.notification-message {
+    color: var(--steam-text);
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.notification-time {
+    color: #8f98a0;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.no-notifications {
+    padding: 40px 20px;
+    text-align: center;
+    color: #8f98a0;
+    font-size: 14px;
+}
+
+.notifications-footer {
+    padding: 12px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.notifications-footer span {
+    color: #66c0f4;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.notifications-footer span:hover {
+    color: #4a9eff;
+}
+
+/* Sepet */
+.steam-cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.steam-cart i {
+    font-size: 20px;
+    color: var(--steam-text);
+    transition: color 0.2s ease;
+}
+
+.steam-cart:hover i {
+    color: var(--steam-white);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--steam-blue);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 16px;
+    text-align: center;
+    display: none;
+}
+
+.cart-dropdown {
+    position: fixed;
+    top: 70px;
+    right: 120px;
+    background: var(--steam-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    min-width: 320px;
+    max-width: 400px;
+    z-index: 99999;
+    display: none;
+}
+
+.cart-dropdown.active {
+    display: block;
+}
+
+.cart-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 12px;
+    width: 12px;
+    height: 12px;
+    background: var(--steam-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-header h4 {
+    color: var(--steam-white);
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cart-item-count {
+    color: var(--steam-text);
+    font-size: 12px;
+}
+
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s ease;
+}
+
+.cart-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-image {
+    width: 48px;
+    height: 64px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.cart-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.cart-item-title {
+    color: var(--steam-white);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cart-item-price {
+    color: #a4d007;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    color: var(--steam-text);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-item-remove:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e74c3c;
+}
+
+.cart-footer {
+    padding: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: var(--steam-white);
+    font-weight: 600;
+}
+
+.cart-total-price {
+    color: #a4d007;
+    font-size: 18px;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 12px;
+    background: var(--steam-blue);
+    color: var(--steam-white);
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-checkout:hover {
+    background: #4a9fd4;
+}
+
+.steam-logo {
+    color: var(--steam-blue);
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+.steam-tab {
+    color: var(--steam-text);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+}
+
+.steam-tab:hover {
+    color: var(--steam-white);
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+.steam-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    max-height: 52px;
+    overflow: hidden;
+}
+
+.steam-user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.steam-user-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.steam-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.steam-user-avatar:hover {
+    transform: scale(1.05);
+}
+
+.steam-user-menu {
+    position: fixed !important;
+    top: 70px !important;
+    right: 40px !important;
+    background: var(--steam-dark) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    min-width: 180px !important;
+    z-index: 99999 !important;
+    display: none;
+    margin-top: 0;
+    padding: 8px 0;
+    color: var(--steam-text) !important;
+}
+
+.steam-user-menu.active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.steam-user-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 12px;
+    width: 12px;
+    height: 12px;
+    background: var(--steam-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--steam-text);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--steam-white);
+}
+
+.menu-item i {
+    width: 16px;
+    text-align: center;
+    color: var(--steam-blue);
+}
+
+.menu-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
+}
+
+.steam-user-name {
+    color: var(--steam-blue);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.steam-user-balance {
+    color: #a4d007;
+    background: #4c6b22;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.steam-user-big {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--steam-blue);
+    letter-spacing: 1px;
+    margin-left: 12px;
+    text-transform: uppercase;
+}
+
+/* Game Slider Styles */
+.game-slider-container {
+    width: calc(100% - 40px);
+    max-width: none;
+    margin: 20px auto;
+    position: relative;
+    background: var(--steam-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.game-slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.slider-item {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-item:first-child {
+    display: block;
+}
+
+.slider-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 0;
+}
+
+/* Sol: Cover Image */
+.slider-cover {
+    width: 30%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.cover-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    background-color: #000;
+}
+
+.slider-cover:hover .cover-image {
+    transform: scale(1.02);
+}
+
+.game-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 20px;
+    color: var(--steam-white);
+}
+
+.game-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.game-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #a4d007;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    margin-bottom: 15px;
+}
+
+.free-text {
+    color: #66c0f4;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.game-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-buy, .btn-wishlist {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.btn-buy {
+    background: linear-gradient(135deg, #a4d007, #7a9f00);
+    color: white;
+}
+
+.btn-buy:hover {
+    background: linear-gradient(135deg, #b8e007, #8bb000);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(164, 208, 7, 0.3);
+}
+
+.btn-wishlist {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+}
+
+.btn-wishlist:hover {
+    background: linear-gradient(135deg, #ff7b7b, #ff6b6b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+/* Orta: Video */
+.slider-video {
+    width: 40%;
+    height: 100%;
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.game-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sound-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.sound-toggle:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.no-video {
+    color: var(--steam-text);
+    font-size: 18px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Sağ: Screenshots */
+.slider-screenshots {
+    width: 30%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    background: #000;
+}
+
+.screenshot-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.screenshot-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.screenshot-item:hover .screenshot-image {
+    transform: scale(1.1);
+}
+
+/* Slider Navigation */
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.slider-arrow {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.slider-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active,
+.dot:hover {
+    background: var(--steam-blue);
+    transform: scale(1.2);
+}
+
+/* Öne Çıkan Oyunlar Slider */
+.featured-games-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.featured-games-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+.featured-game-item {
+    flex: 0 0 calc(25% - 15px);
+    min-width: calc(25% - 15px);
+}
+
+.featured-game-card {
+    background: var(--steam-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.featured-game-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.featured-game-cover-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.featured-game-cover-link:hover {
+    transform: scale(1.05);
+}
+
+.featured-game-info {
+    padding: 15px;
+}
+
+.featured-game-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--steam-white);
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.featured-game-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #a4d007;
+    margin-bottom: 10px;
+}
+
+.featured-game-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-buy-small, .btn-wishlist-small {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.btn-buy-small {
+    background: linear-gradient(135deg, #a4d007 0%, #8fbc00 100%);
+    color: #000;
+}
+
+.btn-buy-small:hover {
+    background: linear-gradient(135deg, #b4e007 0%, #9fcc00 100%);
+    transform: translateY(-1px);
+}
+
+.btn-wishlist-small {
+    background: linear-gradient(135deg, #4c6b22 0%, #3d5a1a 100%);
+    color: #a4d007;
+}
+
+.btn-wishlist-small:hover {
+    background: linear-gradient(135deg, #5c7b32 0%, #4d6a2a 100%);
+    transform: translateY(-1px);
+}
+
+.featured-prev, .featured-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--steam-white);
+    border: none;
+    padding: 15px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.featured-prev {
+    left: -10px;
+}
+
+.featured-next {
+    right: -10px;
+}
+
+.featured-prev:hover, .featured-next:hover {
+    background: var(--steam-blue);
+}
+
+/* Kategori Slider */
+.category-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.category-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+.category-item {
+    flex: 0 0 calc(20% - 16px);
+    min-width: calc(20% - 16px);
+    box-sizing: border-box;
+}
+
+.category-card {
+    background: var(--steam-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 220px;
+    position: relative;
+}
+.category-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.category-background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.category-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(23,26,33,0.7) 60%, rgba(23,26,33,0.95) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.category-content {
+    padding: 18px 16px 14px 16px;
+    color: var(--steam-white);
+    width: 100%;
+}
+.category-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+.category-description {
+    font-size: 13px;
+    color: #b8b6b4;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.category-stats {
+    font-size: 12px;
+    color: #a4d007;
+    margin-bottom: 10px;
+}
+.category-explore-btn {
+    background: linear-gradient(135deg, #66c0f4, #417a9b);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.category-explore-btn:hover {
+    background: linear-gradient(135deg, #417a9b, #66c0f4);
+    transform: translateY(-2px);
+}
+.category-prev, .category-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 2;
+    transition: background 0.3s, transform 0.2s;
+}
+.category-prev:hover, .category-next:hover {
+    background: rgba(0,0,0,0.9);
+    transform: scale(1.1) translateY(-50%);
+}
+.category-prev {
+    left: 0;
+}
+.category-next {
+    right: 0;
+}
+
+/* Browse Games Styles */
+.browse-games-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.browse-categories {
+    flex: 0 0 250px;
+    background: var(--steam-dark);
+    border-radius: 8px;
+    padding: 20px;
+    height: fit-content;
+}
+
+.browse-categories h4 {
+    color: var(--steam-white);
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-item-small {
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--steam-text);
+    font-size: 14px;
+}
+
+.category-item-small:hover {
+    background: rgba(102, 192, 244, 0.1);
+    color: var(--steam-blue);
+}
+
+.category-item-small.active {
+    background: var(--steam-blue);
+    color: white;
+}
+
+.browse-games-content {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.browse-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 20px;
+    background: var(--steam-dark);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.browse-tab {
+    flex: 1;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--steam-text);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.browse-tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--steam-white);
+}
+
+.browse-tab.active {
+    background: var(--steam-blue);
+    color: white;
+}
+
+.browse-games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.browse-game-card {
+    display: flex;
+    background: var(--steam-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 120px;
+}
+
+.browse-game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.browse-game-cover {
+    width: 160px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    border-radius: 8px 0 0 8px;
+    overflow: hidden;
+}
+
+.browse-game-cover-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.browse-game-cover-link:hover {
+    transform: scale(1.05);
+}
+
+.browse-game-cover img, .browse-game-cover {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.browse-game-info {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; satırı kaldırıldı */
+}
+
+.browse-game-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--steam-white);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.browse-game-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #a4d007;
+    margin-bottom: 8px;
+}
+
+.browse-game-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 0;
+    align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .browse-games-container {
+        flex-direction: column;
+    }
+    
+    .browse-categories {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .tab-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .browse-game-card {
+        height: 100px;
+    }
+    
+    .browse-game-cover {
+        width: 120px;
+        height: 100px;
+    }
+    
+    .browse-game-info {
+        padding: 15px;
+    }
+    
+    .browse-game-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .browse-game-price {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .browse-game-actions {
+        gap: 8px;
+    }
+}
+
+/* Oyun Detay Sayfası */
+.game-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.game-header {
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.game-main-content {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+/* Sol: Video Bölümü */
+.game-video-section {
+    flex: 1;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-game-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.sound-toggle-main {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sound-toggle-main:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.no-video-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+.no-video-placeholder {
+    color: #666;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Sağ: Cover Bölümü */
+.game-cover-section {
+    flex: 1;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.game-detail-cover {
+    max-width: 100%;
+    max-height: 60%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Cover Altı: Oyun Bilgileri */
+.game-info-under-cover {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.game-categories-under-cover {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.category-tag-small {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.game-description-under-cover {
+    flex: 1;
+}
+
+.game-description-under-cover p {
+    color: #b8b8b8;
+    line-height: 1.4;
+    font-size: 0.9rem;
+    margin: 0;
+    /* 5-6 satır için sınırlama */
+    max-height: 8.4em; /* 1.4em * 6 satır */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+/* Video Altı: Ekran Görüntüleri Satırı */
+.game-screenshots-row {
+    display: flex;
+    gap: 15px;
+    height: 120px;
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+.screenshot-item-row {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.screenshot-item-row:hover {
+    transform: scale(1.05);
+}
+
+.screenshot-image-row {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Oyun Bilgileri Bölümü */
+.game-info-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.game-detail-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.game-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.game-meta span {
+    color: #b8b8b8;
+    font-size: 0.9rem;
+}
+
+.developer, .publisher {
+    color: #4a9eff !important;
+    font-weight: 500;
+}
+
+.game-categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.category-tag {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.game-description-short {
+    margin-bottom: 25px;
+}
+
+.game-description-short p {
+    color: #b8b8b8;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin: 0;
+    /* 5-6 satır için max-height ve overflow */
+    max-height: 8.4em; /* 1.4em * 6 satır */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+.game-price-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.discount-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.original-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 1.1rem;
+}
+
+.discount-percentage {
+    background: #ff4757;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.current-price {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.price {
+    color: #2ed573;
+}
+
+.free-text {
+    color: #2ed573;
+    font-weight: bold;
+}
+
+.game-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-buy-large, .btn-wishlist-large, .btn-play {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-buy-large {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-buy-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-wishlist-large {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-wishlist-large:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-play {
+    background: linear-gradient(45deg, #2ed573 0%, #1e90ff 100%);
+    color: white;
+}
+
+.btn-play:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 213, 115, 0.4);
+}
+
+.play-time {
+    color: #b8b8b8;
+    font-size: 0.9rem;
+}
+
+/* Oyun Açıklaması */
+.game-description {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.game-description h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.game-description p {
+    color: #b8b8b8;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Yeni Eklenen Bölümler için Stiller */
+
+/* Kısa Açıklama (Cover Altı) */
+.game-short-description {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border-left: 3px solid var(--steam-blue);
+}
+
+.game-short-description p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--steam-text);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Detaylı Oyun Açıklaması */
+.game-description-section {
+    background: var(--steam-dark);
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.game-description-section h3 {
+    color: var(--steam-white);
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--steam-blue);
+    padding-bottom: 10px;
+}
+
+.game-description-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--steam-text);
+    margin: 0;
+    text-align: justify;
+}
+
+/* Oyun Dilleri */
+.game-languages-section {
+    background: var(--steam-dark);
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.game-languages-section h3 {
+    color: var(--steam-white);
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--steam-blue);
+    padding-bottom: 10px;
+}
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.language-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(102, 192, 244, 0.2);
+}
+
+.language-item h4 {
+    color: var(--steam-blue);
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.language-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.language-feature {
+    background: var(--steam-blue);
+    color: var(--steam-dark);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Gelişmiş Değerlendirmeler */
+.game-reviews-section {
+    background: var(--steam-dark);
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.reviews-header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--steam-blue);
+    padding-bottom: 10px;
+}
+
+.reviews-header-main h3 {
+    color: var(--steam-white);
+    font-size: 24px;
+    margin: 0;
+}
+
+.btn-add-review {
+    background: linear-gradient(135deg, #66c0f4 0%, #4a9eff 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 192, 244, 0.3);
+    font-size: 14px;
+}
+
+.btn-add-review:hover {
+    background: linear-gradient(135deg, #4a9eff 0%, #66c0f4 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 192, 244, 0.4);
+}
+
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
+
+.reviews-header h4 {
+    color: var(--steam-white);
+    font-size: 20px;
+    margin: 0;
+}
+
+.average-rating {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rating-score {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--steam-blue);
+}
+
+.rating-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.rating-stars .star {
+    font-size: 20px;
+    color: #666;
+}
+
+.rating-stars .star.filled {
+    color: #ffd700;
+}
+
+.review-count {
+    color: var(--steam-text);
+    font-size: 14px;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 3px solid var(--steam-blue);
+    transition: all 0.3s ease;
+}
+
+.review-item:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: translateX(5px);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.reviewer-name {
+    color: var(--steam-blue);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.verified-badge {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.review-date {
+    color: var(--steam-text);
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.review-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.review-rating .star {
+    font-size: 16px;
+    color: #666;
+}
+
+.review-rating .star.filled {
+    color: #ffd700;
+}
+
+.recommended-badge {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.review-text {
+    color: var(--steam-text);
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+.review-edited {
+    color: var(--steam-text);
+    opacity: 0.6;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
+
+.no-reviews p {
+    color: var(--steam-text);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Gelişmiş Sistem Gereksinimleri */
+.system-requirements-section {
+    background: var(--steam-dark);
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.system-requirements-section h3 {
+    color: var(--steam-white);
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--steam-blue);
+    padding-bottom: 10px;
+}
+
+.requirements-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.requirement-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid rgba(102, 192, 244, 0.2);
+}
+
+.requirement-item h4 {
+    color: var(--steam-blue);
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(102, 192, 244, 0.3);
+    padding-bottom: 10px;
+}
+
+.requirement-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.requirement-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.requirement-row:last-child {
+    border-bottom: none;
+}
+
+.requirement-label {
+    color: var(--steam-text);
+    font-weight: bold;
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+.requirement-value {
+    color: var(--steam-white);
+    text-align: right;
+    flex: 1;
+    margin-left: 20px;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .game-main-content {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    .game-video-section {
+        height: 300px;
+    }
+    
+    .game-cover-section {
+        flex: none;
+        height: 200px;
+    }
+    
+    .game-screenshots-row {
+        height: 80px;
+        gap: 10px;
+        padding: 0 10px;
+    }
+    
+    .game-detail-title {
+        font-size: 2rem;
+    }
+    
+    .game-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn-buy-large, .btn-wishlist-large, .btn-play {
+        width: 100%;
+    }
+    
+    .game-description-short p {
+        -webkit-line-clamp: 4;
+        max-height: 5.6em;
+    }
+
+    .game-description-section,
+    .game-languages-section,
+    .game-reviews-section,
+    .system-requirements-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .languages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .requirements-container {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .requirement-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .requirement-label {
+        min-width: auto;
+    }
+
+    .requirement-value {
+        text-align: left;
+        margin-left: 0;
+    }
+}
+
+/* Bundle Slider Styles */
+.bundle-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+    padding: 0 32px; /* Oklar için iç boşluk */
+    box-sizing: border-box;
+}
+
+.bundle-container {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    gap: 20px;
+    will-change: transform;
+}
+
+.bundle-item {
+    min-width: 25%;
+    max-width: 25%;
+    flex: 0 0 25%;
+    height: 450px;
+    box-sizing: border-box;
+    display: flex;
+}
+.bundle-card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--steam-dark);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.bundle-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.bundle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.bundle-cover {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Tek oyun için */
+.bundle-cover-single {
+    width: 100%;
+    height: 100%;
+}
+
+.bundle-cover-single .bundle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* İki oyun için - yarı yarıya */
+.bundle-cover-split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.bundle-cover-left, .bundle-cover-right {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bundle-cover-left .bundle-image, .bundle-cover-right .bundle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Üç oyun için - üçgen layout */
+.bundle-cover-triangle {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.bundle-cover-top {
+    height: 50%;
+    overflow: hidden;
+}
+
+.bundle-cover-bottom {
+    display: flex;
+    height: 50%;
+}
+
+.bundle-cover-bottom-left, .bundle-cover-bottom-right {
+    flex: 1;
+    overflow: hidden;
+}
+
+.bundle-cover-top .bundle-image,
+.bundle-cover-bottom-left .bundle-image,
+.bundle-cover-bottom-right .bundle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dört veya daha fazla oyun için - grid layout */
+.bundle-cover-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.bundle-cover-grid-top, .bundle-cover-grid-bottom {
+    display: flex;
+    height: 50%;
+}
+
+.bundle-cover-grid-top-left, .bundle-cover-grid-top-right,
+.bundle-cover-grid-bottom-left, .bundle-cover-grid-bottom-right {
+    flex: 1;
+    overflow: hidden;
+}
+
+.bundle-cover-grid-top-left .bundle-image,
+.bundle-cover-grid-top-right .bundle-image,
+.bundle-cover-grid-bottom-left .bundle-image,
+.bundle-cover-grid-bottom-right .bundle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Daha fazla oyun göstergesi */
+.bundle-cover-more {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--steam-white);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.bundle-image {
+    transition: transform 0.3s ease;
+}
+
+.bundle-card:hover .bundle-image {
+    transform: scale(1.05);
+}
+
+.bundle-discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #a4d007;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bundle-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--steam-white);
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Tek satırda tut */
+}
+
+.bundle-games {
+    margin-bottom: 20px;
+    flex-shrink: 0; /* Boyutunu koru */
+}
+
+.bundle-game-count {
+    display: block;
+    font-size: 12px;
+    color: var(--steam-blue);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.bundle-game-names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-height: 60px; /* Maksimum yükseklik */
+    overflow: hidden;
+}
+
+.bundle-game-name {
+    background: rgba(102, 192, 244, 0.1);
+    color: var(--steam-blue);
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid rgba(102, 192, 244, 0.3);
+    white-space: nowrap;
+}
+
+.bundle-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* Boyutunu koru */
+}
+
+.bundle-original-price {
+    font-size: 14px;
+    color: var(--steam-text);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.bundle-current-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #a4d007;
+}
+
+.bundle-buy-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #a4d007 0%, #8bc34a 100%);
+    color: #000;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: auto; /* Butonu alta sabitle */
+    flex-shrink: 0; /* Boyutunu koru */
+}
+
+.bundle-buy-btn:hover {
+    background: linear-gradient(135deg, #8bc34a 0%, #a4d007 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(164, 208, 7, 0.3);
+}
+
+.bundle-prev, .bundle-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(23, 26, 33, 0.95);
+    color: var(--steam-white);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.bundle-prev {
+    left: 8px;
+}
+
+.bundle-next {
+    right: 8px;
+}
+
+.bundle-prev:hover, .bundle-next:hover {
+    background: var(--steam-blue);
+    color: #fff;
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* Responsive Bundle Slider */
+@media (max-width: 1200px) {
+    .bundle-item {
+        min-width: calc(33.333% - 15px);
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bundle-item {
+        min-width: calc(50% - 10px);
+        height: 450px;
+    }
+    
+    .bundle-container {
+        gap: 15px;
+    }
+    
+    .bundle-info {
+        padding: 15px;
+    }
+    
+    .bundle-title {
+        font-size: 16px;
+    }
+    
+    .bundle-description {
+        font-size: 13px;
+    }
+    
+    .bundle-current-price {
+        font-size: 18px;
+    }
+    
+    .bundle-buy-btn {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bundle-item {
+        min-width: calc(100% - 10px);
+        height: 450px;
+    }
+    
+    .bundle-prev, .bundle-next {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+/* Arama Kutusu Stilleri */
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: var(--steam-dark);
+    border-radius: 6px;
+    padding: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--steam-text);
+    padding: 12px 16px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #666;
+}
+
+.search-btn {
+    background: linear-gradient(135deg, #66c0f4 0%, #4a9fd8 100%);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    margin-right: 2px;
+}
+
+.search-btn:hover {
+    background: linear-gradient(135deg, #76d0f4 0%, #5aafd8 100%);
+    transform: translateY(-1px);
+}
+
+/* Sonuç bulunamadı mesajı */
+.no-results-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--steam-text);
+    background: var(--steam-dark);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.no-results-message p {
+    font-size: 16px;
+    margin: 0;
+    color: #888;
+}
+
+/* Bundle Detay Sayfası */
+.bundle-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.bundle-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bundle-cover-section {
+    flex: 0 0 300px;
+}
+
+.bundle-detail-cover {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bundle-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bundle-detail-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--steam-white);
+    margin: 0 0 15px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bundle-detail-description {
+    font-size: 1.1rem;
+    color: #b8b6b4;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.bundle-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.bundle-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #8f98a0;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    color: var(--steam-white);
+    font-weight: bold;
+}
+
+.bundle-price-section {
+    margin-bottom: 25px;
+}
+
+.bundle-discount-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bundle-original-price {
+    font-size: 1.2rem;
+    color: #8f98a0;
+    text-decoration: line-through;
+}
+
+.bundle-discount-percentage {
+    background: linear-gradient(135deg, #a4d007 0%, #8fbc00 100%);
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.bundle-current-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #a4d007;
+}
+
+.bundle-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-buy-bundle, .btn-wishlist-bundle {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-buy-bundle {
+    background: linear-gradient(135deg, #a4d007 0%, #8fbc00 100%);
+    color: #000;
+    flex: 2;
+}
+
+.btn-buy-bundle:hover {
+    background: linear-gradient(135deg, #b4e007 0%, #9fcc00 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(164, 208, 7, 0.3);
+}
+
+.btn-wishlist-bundle {
+    background: linear-gradient(135deg, #4c6b22 0%, #3d5a1a 100%);
+    color: #a4d007;
+    flex: 1;
+}
+
+.btn-wishlist-bundle:hover {
+    background: linear-gradient(135deg, #5c7b32 0%, #4d6a2a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(76, 107, 34, 0.3);
+}
+
+/* Bundle Games Section */
+.bundle-games-section {
+    margin-bottom: 40px;
+}
+
+.bundle-games-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--steam-white);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.bundle-games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.bundle-game-card {
+    background: var(--steam-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    height: 200px;
+}
+
+.bundle-game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.bundle-game-cover {
+    flex: 0 0 150px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bundle-game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #1a1a1a;
+    transition: transform 0.3s ease;
+}
+
+.bundle-game-cover-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.bundle-game-cover-link:hover .bundle-game-image {
+    transform: scale(1.05);
+}
+
+.bundle-game-info {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0; /* Flexbox taşma sorununu çözer */
+}
+
+.bundle-game-title {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.bundle-game-title-link {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--steam-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bundle-game-title-link:hover {
+    color: #66c0f4;
+}
+
+.bundle-game-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #8f98a0;
+    flex-wrap: wrap;
+}
+
+.bundle-game-developer, .bundle-game-publisher {
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bundle-game-categories {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: auto;
+}
+
+.bundle-game-category {
+    background: #2a475e;
+    color: #66c0f4;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.bundle-game-price {
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.bundle-game-individual-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #a4d007;
+}
+
+.bundle-game-description {
+    font-size: 0.85rem;
+    color: #b8b6b4;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.bundle-game-description p {
+    margin: 0;
+}
+
+/* Bundle Savings Section */
+.bundle-savings-section {
+    display: flex;
+    justify-content: center;
+}
+
+.bundle-savings-card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    min-width: 300px;
+}
+
+.bundle-savings-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--steam-white);
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.bundle-savings-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.savings-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #2a475e;
+}
+
+.savings-row:last-child {
+    border-bottom: none;
+}
+
+.savings-label {
+    font-size: 0.95rem;
+    color: #b8b6b4;
+}
+
+.savings-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--steam-white);
+}
+
+.bundle-price {
+    color: #a4d007;
+}
+
+.total-savings {
+    background: rgba(164, 208, 7, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.savings-amount {
+    color: #a4d007;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bundle-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bundle-cover-section {
+        flex: none;
+    }
+
+    .bundle-detail-cover {
+        height: 250px;
+    }
+
+    .bundle-detail-title {
+        font-size: 1.8rem;
+    }
+
+    .bundle-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .bundle-actions {
+        flex-direction: column;
+    }
+
+    .bundle-games-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .bundle-game-card {
+        flex-direction: column;
+        height: auto;
+        min-height: 300px;
+    }
+
+    .bundle-game-cover {
+        flex: none;
+        height: 200px;
+        width: 100%;
+    }
+
+    .bundle-game-info {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .bundle-game-title-link {
+        font-size: 1.2rem;
+        white-space: normal;
+        line-height: 1.3;
+    }
+
+    .bundle-game-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .bundle-game-categories {
+        margin-bottom: 10px;
+    }
+
+    .bundle-game-description {
+        -webkit-line-clamp: 4;
+    }
+}
+
+@media (max-width: 480px) {
+    .bundle-details-container {
+        padding: 10px;
+    }
+
+    .bundle-header {
+        padding: 20px;
+    }
+
+    .bundle-detail-title {
+        font-size: 1.5rem;
+    }
+
+    .bundle-current-price {
+        font-size: 1.5rem;
+    }
+
+    .bundle-game-card {
+        min-height: 250px;
+    }
+
+    .bundle-game-cover {
+        height: 150px;
+    }
+
+    .bundle-game-info {
+        padding: 12px;
+    }
+
+    .bundle-game-title-link {
+        font-size: 1.1rem;
+    }
+}
+
+/* Bildirim Toast Stilleri */
+.notification-toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
+    max-width: 400px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideInRight 0.3s ease-out;
+}
+
+.notification-toast.notification-success {
+    border-left: 4px solid #a4d007;
+}
+
+.notification-toast.notification-error {
+    border-left: 4px solid #e74c3c;
+}
+
+.notification-toast.notification-info {
+    border-left: 4px solid #66c0f4;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.notification-message {
+    color: #fff;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: #b8b6b4;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.notification-close:hover {
+    color: #fff;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Boş sepet mesajı */
+.empty-cart-message {
+    text-align: center;
+    padding: 20px;
+    color: #b8b6b4;
+    font-style: italic;
+}
+
+/* DLC Bölümü Stilleri */
+.dlc-section {
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dlc-section h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.dlc-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.dlc-item {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.dlc-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(164, 208, 7, 0.3);
+}
+
+.dlc-cover {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dlc-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.dlc-item:hover .dlc-cover-image {
+    transform: scale(1.05);
+}
+
+.dlc-info {
+    padding: 20px;
+}
+
+.dlc-name {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.dlc-description {
+    color: #b8b6b4;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.dlc-meta {
+    margin-bottom: 15px;
+}
+
+.dlc-release-date {
+    color: #66c0f4;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.dlc-price-section {
+    margin-bottom: 15px;
+}
+
+.dlc-price {
+    color: #a4d007;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.dlc-price-free {
+    color: #66c0f4;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.dlc-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-dlc-buy, .btn-dlc-download {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-dlc-buy {
+    background: linear-gradient(135deg, #a4d007 0%, #8bc34a 100%);
+    color: #000;
+}
+
+.btn-dlc-buy:hover {
+    background: linear-gradient(135deg, #8bc34a 0%, #a4d007 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(164, 208, 7, 0.3);
+}
+
+.btn-dlc-download {
+    background: linear-gradient(135deg, #66c0f4 0%, #4fc3f7 100%);
+    color: #000;
+}
+
+.btn-dlc-download:hover {
+    background: linear-gradient(135deg, #4fc3f7 0%, #66c0f4 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 192, 244, 0.3);
+}
+
+/* Responsive DLC Tasarımı */
+@media (max-width: 768px) {
+    .dlc-section {
+        padding: 20px;
+        margin: 30px 0;
+    }
+
+    .dlc-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .dlc-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dlc-cover {
+        height: 150px;
+    }
+
+    .dlc-info {
+        padding: 15px;
+    }
+
+    .dlc-name {
+        font-size: 1.2rem;
+    }
+
+    .dlc-description {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .dlc-actions {
+        flex-direction: column;
+    }
+
+    .btn-dlc-buy, .btn-dlc-download {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .dlc-section {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .dlc-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .dlc-cover {
+        height: 120px;
+    }
+
+    .dlc-info {
+        padding: 12px;
+    }
+
+    .dlc-name {
+        font-size: 1.1rem;
+    }
+
+    .dlc-price, .dlc-price-free {
+        font-size: 1.1rem;
+    }
+}
+

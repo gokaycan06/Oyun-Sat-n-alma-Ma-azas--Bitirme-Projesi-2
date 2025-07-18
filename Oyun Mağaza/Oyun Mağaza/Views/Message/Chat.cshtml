@@ -1,0 +1,70 @@
+@model Oyun_Mağaza.ViewModels.ChatViewModel
+@{
+    ViewData["Title"] = $"Sohbet - @{Model.FriendUsername}";
+    Layout = "_StoreLayout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/chat.css" />
+}
+
+@section Scripts {
+    <script src="~/js/chat.js"></script>
+}
+
+@Html.AntiForgeryToken()
+
+<div class="chat-container">
+    <!-- Chat Header -->
+    <div class="chat-header">
+        <div class="chat-header-info">
+            <img src="@Model.FriendAvatar" alt="Avatar" class="chat-avatar">
+            <div class="chat-user-info">
+                <h3 class="chat-user-name">@Model.FriendName</h3>
+                <p class="chat-user-username">@Model.FriendUsername</p>
+            </div>
+        </div>
+        <div class="chat-header-actions">
+            <button class="btn-back" onclick="window.location.href='/Home/Friends'">
+                <i class="fas fa-arrow-left"></i>
+                Geri
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="chat-messages" id="chatMessages">
+        @foreach (var message in Model.Messages)
+        {
+            var isOwnMessage = message.SenderId == Model.CurrentUserId;
+            <div class="message @(isOwnMessage ? "message-own" : "message-other")" data-message-id="@message.Id">
+                <div class="message-content">
+                    <p class="message-text">@message.Content</p>
+                    <span class="message-time">@message.CreatedAt.ToString("HH:mm")</span>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Chat Input -->
+    <div class="chat-input-container">
+        <div class="chat-input-wrapper">
+            <input type="text" 
+                   id="messageInput" 
+                   class="chat-input" 
+                   placeholder="Mesajınızı yazın..." 
+                   maxlength="1000">
+            <button class="chat-send-btn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Global değişkenler
+    const friendId = @Model.FriendId;
+    const currentUserId = @Model.CurrentUserId;
+    let lastMessageId = @(Model.Messages.Count > 0 ? Model.Messages.Max(m => m.Id) : 0);
+    let messageCheckInterval;
+</script> 

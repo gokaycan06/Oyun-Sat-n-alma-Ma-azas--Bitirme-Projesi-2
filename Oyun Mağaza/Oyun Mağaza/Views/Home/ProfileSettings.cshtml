@@ -1,0 +1,336 @@
+@model Oyun_Mağaza.ViewModels.ProfileSettingsViewModel
+@{
+    ViewData["Title"] = "Profil Ayarları";
+    Layout = "_StoreLayout";
+}
+
+<style>
+    .profile-settings-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+        border-radius: 10px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #66c0f4;
+    }
+
+    .profile-header h2 {
+        color: #66c0f4;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-header p {
+        color: #c7d5e0;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .avatar-section {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        border: 1px solid rgba(102, 192, 244, 0.3);
+    }
+
+    .avatar-preview {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #66c0f4;
+        box-shadow: 0 4px 20px rgba(102, 192, 244, 0.3);
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .avatar-preview:hover {
+        transform: scale(1.05);
+    }
+
+    .file-input-wrapper {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .file-input-wrapper input[type=file] {
+        position: absolute;
+        left: -9999px;
+    }
+
+    .file-input-label {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #66c0f4 0%, #4a9eff 100%);
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        box-shadow: 0 4px 15px rgba(102, 192, 244, 0.3);
+    }
+
+    .file-input-label:hover {
+        background: linear-gradient(135deg, #4a9eff 0%, #66c0f4 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 192, 244, 0.4);
+    }
+
+    .form-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(102, 192, 244, 0.2);
+    }
+
+    .form-section h3 {
+        color: #66c0f4;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(102, 192, 244, 0.3);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        color: #c7d5e0;
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(102, 192, 244, 0.3);
+        border-radius: 8px;
+        color: #c7d5e0;
+        padding: 12px 15px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #66c0f4;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 15px rgba(102, 192, 244, 0.3);
+    }
+
+    .form-control[readonly] {
+        background: rgba(255, 255, 255, 0.05);
+        color: #8f98a0;
+        border-color: rgba(102, 192, 244, 0.2);
+    }
+
+    .form-control[readonly]:focus {
+        border-color: rgba(102, 192, 244, 0.2);
+        box-shadow: none;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .btn-save {
+        background: linear-gradient(135deg, #66c0f4 0%, #4a9eff 100%);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 192, 244, 0.3);
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .btn-save:hover {
+        background: linear-gradient(135deg, #4a9eff 0%, #66c0f4 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 192, 244, 0.4);
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    .field-info {
+        color: #8f98a0;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        font-style: italic;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+    }
+
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 10px;
+    }
+
+    .col-md-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    @@media (max-width: 768px) {
+        .col-md-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        
+        .profile-settings-container {
+            margin: 15px;
+            padding: 15px;
+        }
+        
+        .profile-header h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<div class="profile-settings-container">
+    <div class="profile-header">
+        <h2>Profil Ayarları</h2>
+        <p>Hesap bilgilerinizi güncelleyin ve kişiselleştirin</p>
+    </div>
+
+    @if (ViewBag.Success != null)
+    {
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i> @ViewBag.Success
+        </div>
+    }
+
+    <form asp-action="ProfileSettings" asp-controller="Home" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        
+        <!-- Avatar Bölümü -->
+        <div class="avatar-section">
+            <img src="@(string.IsNullOrEmpty(Model.ProfilePicture) ? "/images/avatars/default-avatar.jpg" : Model.ProfilePicture)" 
+                 alt="Avatar" class="avatar-preview" id="avatarPreview" />
+            <div class="file-input-wrapper">
+                <input asp-for="ProfilePictureFile" type="file" accept="image/*" id="avatarInput" />
+                <label for="avatarInput" class="file-input-label">
+                    <i class="fas fa-camera"></i> Profil Fotoğrafı Değiştir
+                </label>
+            </div>
+        </div>
+
+        <!-- Hesap Bilgileri -->
+        <div class="form-section">
+            <h3><i class="fas fa-user"></i> Hesap Bilgileri</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Username" class="form-label"></label>
+                        <input asp-for="Username" class="form-control" readonly />
+                        <div class="field-info">Kullanıcı adı değiştirilemez</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" readonly />
+                        <div class="field-info">E-posta adresi değiştirilemez</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kişisel Bilgiler -->
+        <div class="form-section">
+            <h3><i class="fas fa-id-card"></i> Kişisel Bilgiler</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DisplayName" class="form-label"></label>
+                        <input asp-for="DisplayName" class="form-control" placeholder="Görünen isminizi girin" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BirthDate" class="form-label"></label>
+                        <input asp-for="BirthDate" class="form-control" type="date" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bio" class="form-label"></label>
+                <textarea asp-for="Bio" class="form-control" rows="4" 
+                          placeholder="Kendiniz hakkında kısa bir açıklama yazın..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-save">
+            <i class="fas fa-save"></i> Değişiklikleri Kaydet
+        </button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Avatar önizleme
+        document.getElementById('avatarInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatarPreview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submit edildikten sonra navbar'daki avatarı güncelle
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function() {
+                // Form submit edildikten sonra navbar'daki avatarı güncelle
+                setTimeout(function() {
+                    const navbarAvatar = document.querySelector('.steam-user-avatar');
+                    if (navbarAvatar) {
+                        const newAvatarSrc = document.getElementById('avatarPreview').src;
+                        navbarAvatar.src = newAvatarSrc;
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+} 

@@ -1,0 +1,259 @@
+@{
+    ViewData["Title"] = "Cüzdan";
+    Layout = "_StoreLayout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/wallet.css" />
+}
+
+@Html.AntiForgeryToken()
+
+<div class="wallet-container">
+    <div class="wallet-header">
+        <h2>Cüzdan</h2>
+        <div class="current-balance">
+            <span class="balance-label">Mevcut Bakiye</span>
+            <span class="balance-amount">₺@ViewBag.UserBalance.ToString("F2")</span>
+        </div>
+    </div>
+
+    <div class="wallet-content">
+        <!-- Ödeme Yöntemleri -->
+        <div class="payment-methods">
+            <h3>Ödeme Yöntemi</h3>
+            <div class="payment-options">
+                <div class="payment-option active" data-method="credit-card">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Kredi Kartı</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Miktar Seçimi -->
+        <div class="amount-selection">
+            <h3>Yüklenecek Miktar</h3>
+            <div class="amount-options">
+                <div class="amount-option" data-amount="25">
+                    <div class="amount">₺25</div>
+                    <div class="bonus">+₺0 Bonus</div>
+                </div>
+                <div class="amount-option" data-amount="50">
+                    <div class="amount">₺50</div>
+                    <div class="bonus">+₺5 Bonus</div>
+                </div>
+                <div class="amount-option" data-amount="100">
+                    <div class="amount">₺100</div>
+                    <div class="bonus">+₺15 Bonus</div>
+                </div>
+                <div class="amount-option" data-amount="200">
+                    <div class="amount">₺200</div>
+                    <div class="bonus">+₺40 Bonus</div>
+                </div>
+                <div class="amount-option" data-amount="500">
+                    <div class="amount">₺500</div>
+                    <div class="bonus">+₺125 Bonus</div>
+                </div>
+                <div class="amount-option" data-amount="custom">
+                    <div class="amount">Özel Miktar</div>
+                    <div class="bonus">₺10-₺10,000</div>
+                </div>
+            </div>
+            <div class="custom-amount-input" style="display: none;">
+                <input type="number" id="customAmount" placeholder="Miktar girin (₺10-₺10,000)" min="10" max="10000">
+            </div>
+        </div>
+
+        <!-- Kredi Kartı Bilgileri -->
+        <div id="creditCardSection" class="credit-card-section">
+            <h3>Kredi Kartı Bilgileri</h3>
+            <div class="card-form">
+                <div class="form-group">
+                    <label for="cardNumber">Kart Numarası</label>
+                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div class="form-group">
+                    <label for="cardName">Kart Sahibinin Adı</label>
+                    <input type="text" id="cardName" placeholder="Ad Soyad">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryMonth">Son Kullanma Ayı</label>
+                        <select id="expiryMonth">
+                            <option value="">Ay</option>
+                            @for (int i = 1; i <= 12; i++)
+                            {
+                                <option value="@i.ToString("00")">@i.ToString("00")</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiryYear">Son Kullanma Yılı</label>
+                        <select id="expiryYear">
+                            <option value="">Yıl</option>
+                            @for (int year = DateTime.Now.Year; year <= DateTime.Now.Year + 10; year++)
+                            {
+                                <option value="@year">@year</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" maxlength="3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ödeme Özeti -->
+        <div class="payment-summary">
+            <h3>Ödeme Özeti</h3>
+            <div class="summary-item">
+                <span>Seçilen Miktar:</span>
+                <span id="selectedAmount">₺0.00</span>
+            </div>
+            <div class="summary-item">
+                <span>Bonus:</span>
+                <span id="bonusAmount">₺0.00</span>
+            </div>
+            <div class="summary-item total">
+                <span>Toplam:</span>
+                <span id="totalAmount">₺0.00</span>
+            </div>
+        </div>
+
+        <!-- Ödeme Butonu -->
+        <div class="payment-actions">
+            <button class="btn-load-balance" onclick="loadBalance()">
+                <i class="fas fa-wallet"></i>
+                Bakiye Yükle
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+let selectedPaymentMethod = 'credit-card';
+let selectedAmount = 0;
+let bonusAmount = 0;
+
+// Ödeme yöntemi seçimi
+document.querySelectorAll('.payment-option').forEach(option => {
+    option.addEventListener('click', function() {
+        document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
+        this.classList.add('active');
+        selectedPaymentMethod = this.getAttribute('data-method');
+        
+        // Kredi kartı seçildiğinde formu göster (her zaman göster çünkü tek seçenek)
+        document.getElementById('creditCardSection').style.display = 'block';
+    });
+});
+
+// Miktar seçimi
+document.querySelectorAll('.amount-option').forEach(option => {
+    option.addEventListener('click', function() {
+        document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        const amount = this.getAttribute('data-amount');
+        if (amount === 'custom') {
+            document.querySelector('.custom-amount-input').style.display = 'block';
+            document.getElementById('customAmount').focus();
+        } else {
+            document.querySelector('.custom-amount-input').style.display = 'none';
+            selectedAmount = parseInt(amount);
+            updateSummary();
+        }
+    });
+});
+
+// Özel miktar girişi
+document.getElementById('customAmount').addEventListener('input', function() {
+    selectedAmount = parseInt(this.value) || 0;
+    updateSummary();
+});
+
+// Kart numarası formatlaması
+document.getElementById('cardNumber').addEventListener('input', function() {
+    let value = this.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+    let formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+    this.value = formattedValue;
+});
+
+// CVV sadece rakam
+document.getElementById('cvv').addEventListener('input', function() {
+    this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+function updateSummary() {
+    // Bonus hesaplama
+    bonusAmount = 0;
+    if (selectedAmount >= 50 && selectedAmount < 100) bonusAmount = 5;
+    else if (selectedAmount >= 100 && selectedAmount < 200) bonusAmount = 15;
+    else if (selectedAmount >= 200 && selectedAmount < 500) bonusAmount = 40;
+    else if (selectedAmount >= 500) bonusAmount = 125;
+    
+    const total = selectedAmount + bonusAmount;
+    
+    document.getElementById('selectedAmount').textContent = `₺${selectedAmount.toFixed(2)}`;
+    document.getElementById('bonusAmount').textContent = `₺${bonusAmount.toFixed(2)}`;
+    document.getElementById('totalAmount').textContent = `₺${total.toFixed(2)}`;
+}
+
+function loadBalance() {
+    if (selectedAmount < 10) {
+        alert('Minimum yükleme miktarı ₺10\'dur.');
+        return;
+    }
+    
+    if (selectedAmount > 10000) {
+        alert('Maksimum yükleme miktarı ₺10,000\'dir.');
+        return;
+    }
+
+    // Kredi kartı bilgilerini kontrol et
+    const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+    const cardName = document.getElementById('cardName').value;
+    const expiryMonth = document.getElementById('expiryMonth').value;
+    const expiryYear = document.getElementById('expiryYear').value;
+    const cvv = document.getElementById('cvv').value;
+
+    if (!cardNumber || !cardName || !expiryMonth || !expiryYear || !cvv) {
+        alert('Lütfen tüm kredi kartı bilgilerini doldurun.');
+        return;
+    }
+
+    // Test kartı kontrolü
+    if (cardNumber === '1111111111111111' && cvv === '111') {
+        // AJAX ile bakiye yükleme işlemi
+        const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+        
+        fetch('/Home/LoadBalance', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': token || ''
+            },
+            body: JSON.stringify({
+                amount: selectedAmount,
+                bonus: bonusAmount,
+                paymentMethod: selectedPaymentMethod
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`₺${selectedAmount.toFixed(2)} bakiye başarıyla yüklendi!\nBonus: ₺${bonusAmount.toFixed(2)}\nToplam: ₺${(selectedAmount + bonusAmount).toFixed(2)}`);
+                window.location.reload();
+            } else {
+                alert('Bakiye yükleme işlemi başarısız: ' + data.error);
+            }
+        })
+        .catch(error => {
+            alert('Bir hata oluştu: ' + error);
+        });
+    } else {
+        alert('Geçersiz kredi kartı bilgileri. Test için: 1111 1111 1111 1111 / CVV: 111');
+    }
+}
+</script> 

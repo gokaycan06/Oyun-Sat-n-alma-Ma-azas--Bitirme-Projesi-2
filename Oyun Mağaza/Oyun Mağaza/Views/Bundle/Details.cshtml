@@ -1,0 +1,172 @@
+@model Oyun_Mağaza.ViewModels.BundleDetailViewModel
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "_StoreLayout";
+}
+
+<div class="bundle-details-container">
+    <!-- Bundle Header -->
+    <div class="bundle-header">
+        <div class="bundle-cover-section">
+            <img src="@Model.CoverImage" alt="@Model.Name" class="bundle-detail-cover">
+        </div>
+        <div class="bundle-info-section">
+            <h1 class="bundle-detail-title">@Model.Name</h1>
+            <p class="bundle-detail-description">@Model.Description</p>
+            
+            <div class="bundle-stats">
+                <div class="bundle-stat">
+                    <span class="stat-label">Oyun Sayısı:</span>
+                    <span class="stat-value">@Model.GameCount oyun</span>
+                </div>
+                <div class="bundle-stat">
+                    <span class="stat-label">Geçerlilik:</span>
+                    <span class="stat-value">@Model.StartDate.ToString("dd.MM.yyyy") - @Model.EndDate.ToString("dd.MM.yyyy")</span>
+                </div>
+            </div>
+
+            <div class="bundle-price-section">
+                @if (Model.IsDiscounted)
+                {
+                    <div class="bundle-discount-info">
+                        <span class="bundle-original-price">₺@Model.Price.ToString("F2")</span>
+                        <span class="bundle-discount-percentage">-%@Model.DiscountPercentage.ToString("F0")</span>
+                    </div>
+                }
+                <div class="bundle-current-price">₺@Model.CurrentPrice.ToString("F2")</div>
+            </div>
+
+            <div class="bundle-actions">
+                <button class="btn-buy-bundle" onclick="addBundleToCart(@Model.BundleId)">Bundle'ı Sepete Ekle</button>
+                <button class="btn-wishlist-bundle" onclick="addBundleToWishlist(@Model.BundleId)">❤ İstek Listesine Ekle</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bundle Games -->
+    <div class="bundle-games-section">
+        <h2 class="bundle-games-title">Bundle İçeriği (@Model.GameCount oyun)</h2>
+        <div class="bundle-games-grid">
+            @foreach (var game in Model.Games)
+            {
+                <div class="bundle-game-card">
+                    <div class="bundle-game-cover">
+                        <a href="/Game/Details/@game.GameId" class="bundle-game-cover-link">
+                            <img src="@game.CoverImage" alt="@game.Title" class="bundle-game-image">
+                        </a>
+                    </div>
+                    <div class="bundle-game-info">
+                        <h3 class="bundle-game-title">
+                            <a href="/Game/Details/@game.GameId" class="bundle-game-title-link">@game.Title</a>
+                        </h3>
+                        <div class="bundle-game-meta">
+                            <span class="bundle-game-developer">@game.DeveloperName</span>
+                            <span class="bundle-game-publisher">@game.PublisherName</span>
+                        </div>
+                        <div class="bundle-game-categories">
+                            @{
+                                var categoryCountBundleDetails = 0;
+                            }
+                            @foreach (var category in game.Categories)
+                            {
+                                if (categoryCountBundleDetails < 3)
+                                {
+                                    <span class="bundle-game-category">@category</span>
+                                    categoryCountBundleDetails++;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                        </div>
+                        <div class="bundle-game-price">
+                            <span class="bundle-game-individual-price">₺@game.Price.ToString("F2")</span>
+                        </div>
+                        <div class="bundle-game-description">
+                            @if (game.Description.Length > 150)
+                            {
+                                <p>@game.Description.Substring(0, 150)...</p>
+                            }
+                            else
+                            {
+                                <p>@game.Description</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Bundle Savings -->
+    <div class="bundle-savings-section">
+        <div class="bundle-savings-card">
+            <h3 class="bundle-savings-title">Bundle Tasarrufu</h3>
+            <div class="bundle-savings-info">
+                @{
+                    var totalIndividualPrice = Model.Games.Sum(g => g.Price);
+                    var savings = totalIndividualPrice - Model.CurrentPrice;
+                    var savingsPercentage = totalIndividualPrice > 0 ? (savings / totalIndividualPrice) * 100 : 0;
+                }
+                <div class="savings-row">
+                    <span class="savings-label">Ayrı ayrı satın alma:</span>
+                    <span class="savings-value">₺@totalIndividualPrice.ToString("F2")</span>
+                </div>
+                <div class="savings-row">
+                    <span class="savings-label">Bundle fiyatı:</span>
+                    <span class="savings-value bundle-price">₺@Model.CurrentPrice.ToString("F2")</span>
+                </div>
+                <div class="savings-row total-savings">
+                    <span class="savings-label">Toplam tasarruf:</span>
+                    <span class="savings-value savings-amount">₺@savings.ToString("F2") (%@savingsPercentage.ToString("F0"))</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function addBundleToCart(bundleId) {
+            // Bundle'ı sepete ekleme işlemi
+            fetch('/Cart/AddBundleToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ bundleId: bundleId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    alert('Bundle sepete eklendi!');
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Bir hata oluştu.');
+            });
+        }
+
+        // Sepet sayısını güncelleme
+        function updateCartBadge(count) {
+            const badge = document.querySelector('.cart-badge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+
+        function addBundleToWishlist(bundleId) {
+            // Bundle'ı istek listesine ekleme
+            alert('Bundle istek listesine ekleniyor... Bundle ID: ' + bundleId);
+            // Gerçek uygulamada burada AJAX ile istek listesine ekleme işlemi yapılır
+        }
+    </script>
+} 

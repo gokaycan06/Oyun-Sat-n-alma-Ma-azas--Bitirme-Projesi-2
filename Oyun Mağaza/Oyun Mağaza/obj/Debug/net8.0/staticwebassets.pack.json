@@ -1,0 +1,1625 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Oyun Mağaza.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Oyun Mağaza.k2w4h4yej0.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\cart.css",
+      "PackagePath": "staticwebassets\\css\\cart.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\chat.css",
+      "PackagePath": "staticwebassets\\css\\chat.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\forgot-password.css",
+      "PackagePath": "staticwebassets\\css\\forgot-password.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\friends.css",
+      "PackagePath": "staticwebassets\\css\\friends.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\register.css",
+      "PackagePath": "staticwebassets\\css\\register.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\store.css",
+      "PackagePath": "staticwebassets\\css\\store.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\css\\wallet.css",
+      "PackagePath": "staticwebassets\\css\\wallet.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\ac-valhalla-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\ac-valhalla-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\among-us-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\among-us-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\apex-legends-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\apex-legends-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\ark-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\ark-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\armored-core-6-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\armored-core-6-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\baldurs-gate-3-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\baldurs-gate-3-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\cod-mw3-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\cod-mw3-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\cod-warzone-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\cod-warzone-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\cs2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\cs2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\cyberpunk-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\cyberpunk-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\cyberpunk-phantom-liberty-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\cyberpunk-phantom-liberty-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\dbd-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\dbd-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\destiny2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\destiny2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\disco-elysium-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\disco-elysium-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\divinity-os2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\divinity-os2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\dota2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\dota2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\elden-ring-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\elden-ring-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\fall-guys-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\fall-guys-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\fallout4-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\fallout4-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\fallout4-far-harbor-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\fallout4-far-harbor-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\fc24-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\fc24-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\forza5-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\forza5-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\god-of-war-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\god-of-war-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\gtav-cayo-perico-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\gtav-cayo-perico-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\gtav-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\gtav-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\hades-blood-price-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\hades-blood-price-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\hades-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\hades-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\hogwarts-legacy-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\hogwarts-legacy-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\l4d2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\l4d2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\lies-of-p-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\lies-of-p-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\minecraft-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\minecraft-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\phasmophobia-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\phasmophobia-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\poe-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\poe-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\portal2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\portal2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\pubg-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\pubg-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\r6-siege-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\r6-siege-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\rdr2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\rdr2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\rdr2-naturalist-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\rdr2-naturalist-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\re4-remake-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\re4-remake-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\re4-separate-ways-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\re4-separate-ways-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\remnant-2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\remnant-2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\rocket-league-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\rocket-league-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\rust-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\rust-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\skyrim-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\skyrim-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\skyrim-dawnguard-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\skyrim-dawnguard-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\stardew-ginger-island-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\stardew-ginger-island-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\stardew-valley-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\stardew-valley-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\starfield-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\starfield-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\street-fighter-6-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\street-fighter-6-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\terraria-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\terraria-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\terraria-journeys-end-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\terraria-journeys-end-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\tf2-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\tf2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\valorant-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\valorant-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\war-thunder-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\war-thunder-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\warframe-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\warframe-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\witcher3-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\witcher3-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\games\\witcher3-hearts-of-stone-cover.jpg",
+      "PackagePath": "staticwebassets\\games\\witcher3-hearts-of-stone-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861293883077931.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861293883077931.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861293971115188.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861293971115188.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861294162674467.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861294162674467.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861294212352866.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861294212352866.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861295950890329.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861295950890329.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861296041813640.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861296041813640.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861361029875067.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861361029875067.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861375659059175.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861375659059175.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861388552835881.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861388552835881.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861410132668179.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861410132668179.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_1_638861429975941310.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_1_638861429975941310.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_2_638861424272255658.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_2_638861424272255658.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\avatar_2_638861481972241340.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\avatar_2_638861481972241340.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\avatars\\default-avatar.jpg",
+      "PackagePath": "staticwebassets\\images\\avatars\\default-avatar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\background1.jpg",
+      "PackagePath": "staticwebassets\\images\\background1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\background2.jpg",
+      "PackagePath": "staticwebassets\\images\\background2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\background3.jpg",
+      "PackagePath": "staticwebassets\\images\\background3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\dota2-cover.jpg",
+      "PackagePath": "staticwebassets\\images\\dota2-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\forgot1.jpg",
+      "PackagePath": "staticwebassets\\images\\forgot1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\forgot2.jpg",
+      "PackagePath": "staticwebassets\\images\\forgot2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\forgot3.jpg",
+      "PackagePath": "staticwebassets\\images\\forgot3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\register1.jpg",
+      "PackagePath": "staticwebassets\\images\\register1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\register2.jpg",
+      "PackagePath": "staticwebassets\\images\\register2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\images\\register3.jpg",
+      "PackagePath": "staticwebassets\\images\\register3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\js\\chat.js",
+      "PackagePath": "staticwebassets\\js\\chat.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\js\\friends.js",
+      "PackagePath": "staticwebassets\\js\\friends.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ac-valhalla-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ac-valhalla-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ac-valhalla-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ac-valhalla-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ac-valhalla-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ac-valhalla-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ac-valhalla-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ac-valhalla-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ac-valhalla-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\ac-valhalla-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\among-us-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\among-us-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\among-us-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\among-us-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\among-us-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\among-us-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\among-us-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\among-us-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\among-us-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\among-us-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\apex-legends-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\apex-legends-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\apex-legends-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\apex-legends-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\apex-legends-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\apex-legends-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\apex-legends-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\apex-legends-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\apex-legends-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\apex-legends-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ark-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ark-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ark-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ark-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ark-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ark-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ark-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\ark-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\ark-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\ark-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\armored-core-6-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\armored-core-6-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\armored-core-6-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\armored-core-6-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\armored-core-6-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\armored-core-6-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\armored-core-6-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\armored-core-6-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\armored-core-6-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\armored-core-6-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\baldurs-gate-3-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\baldurs-gate-3-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\baldurs-gate-3-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\baldurs-gate-3-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\baldurs-gate-3-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\baldurs-gate-3-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\baldurs-gate-3-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\baldurs-gate-3-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\baldurs-gate-3-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\baldurs-gate-3-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-mw3-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-mw3-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-mw3-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-mw3-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-mw3-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-mw3-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-mw3-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-mw3-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-mw3-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\cod-mw3-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-warzone-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-warzone-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-warzone-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-warzone-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-warzone-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-warzone-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-warzone-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cod-warzone-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cod-warzone-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\cod-warzone-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cs2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cs2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cs2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cs2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cs2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cs2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cs2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cs2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cs2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\cs2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cyberpunk-phantom-liberty-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cyberpunk-phantom-liberty-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cyberpunk-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cyberpunk-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cyberpunk-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cyberpunk-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cyberpunk-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cyberpunk-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cyberpunk-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\cyberpunk-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\cyberpunk-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\cyberpunk-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dbd-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dbd-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dbd-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dbd-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dbd-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dbd-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dbd-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dbd-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dbd-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\dbd-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\destiny2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\destiny2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\destiny2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\destiny2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\destiny2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\destiny2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\destiny2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\destiny2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\destiny2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\destiny2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\disco-elysium-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\disco-elysium-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\disco-elysium-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\disco-elysium-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\disco-elysium-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\disco-elysium-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\disco-elysium-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\disco-elysium-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\disco-elysium-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\disco-elysium-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\divinity-os2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\divinity-os2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\divinity-os2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\divinity-os2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\divinity-os2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\divinity-os2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\divinity-os2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\divinity-os2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\divinity-os2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\divinity-os2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dota2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dota2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dota2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dota2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dota2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dota2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dota2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\dota2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\dota2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\dota2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\elden-ring-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\elden-ring-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\elden-ring-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\elden-ring-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\elden-ring-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\elden-ring-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\elden-ring-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\elden-ring-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\elden-ring-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\elden-ring-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fall-guys-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fall-guys-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fall-guys-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fall-guys-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fall-guys-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fall-guys-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fall-guys-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fall-guys-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fall-guys-video-1.mp4",
+      "PackagePath": "staticwebassets\\screenshots\\fall-guys-video-1.mp4"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fallout4-far-harbor-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fallout4-far-harbor-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fallout4-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fallout4-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fallout4-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fallout4-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fallout4-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fallout4-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fallout4-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fallout4-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fallout4-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\fallout4-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fc24-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fc24-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fc24-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fc24-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fc24-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fc24-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fc24-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\fc24-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\fc24-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\fc24-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\forza5-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\forza5-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\forza5-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\forza5-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\forza5-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\forza5-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\forza5-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\forza5-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\forza5-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\forza5-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\god-of-war-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\god-of-war-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\god-of-war-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\god-of-war-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\god-of-war-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\god-of-war-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\god-of-war-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\god-of-war-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\god-of-war-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\god-of-war-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\gtav-cayo-perico-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\gtav-cayo-perico-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\gtav-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\gtav-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\gtav-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\gtav-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\gtav-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\gtav-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\gtav-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\gtav-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\gtav-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\gtav-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hades-blood-price-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hades-blood-price-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hades-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hades-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hades-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hades-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hades-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hades-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hades-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hades-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hades-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\hades-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hogwarts-legacy-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hogwarts-legacy-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hogwarts-legacy-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hogwarts-legacy-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hogwarts-legacy-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hogwarts-legacy-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hogwarts-legacy-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\hogwarts-legacy-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\hogwarts-legacy-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\hogwarts-legacy-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\kategoriarkaplan.webp",
+      "PackagePath": "staticwebassets\\screenshots\\kategoriarkaplan.webp"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\l4d2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\l4d2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\l4d2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\l4d2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\l4d2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\l4d2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\l4d2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\l4d2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\l4d2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\l4d2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\lies-of-p-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\lies-of-p-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\lies-of-p-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\lies-of-p-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\lies-of-p-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\lies-of-p-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\lies-of-p-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\lies-of-p-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\lies-of-p-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\lies-of-p-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\minecraft-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\minecraft-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\minecraft-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\minecraft-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\minecraft-screenshot-3.webp",
+      "PackagePath": "staticwebassets\\screenshots\\minecraft-screenshot-3.webp"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\minecraft-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\minecraft-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\minecraft-video-1.mp4",
+      "PackagePath": "staticwebassets\\screenshots\\minecraft-video-1.mp4"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\phasmophobia-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\phasmophobia-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\phasmophobia-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\phasmophobia-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\phasmophobia-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\phasmophobia-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\phasmophobia-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\phasmophobia-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\phasmophobia-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\phasmophobia-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\poe-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\poe-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\poe-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\poe-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\poe-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\poe-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\poe-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\poe-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\poe-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\poe-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\portal2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\portal2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\portal2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\portal2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\portal2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\portal2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\portal2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\portal2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\portal2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\portal2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\pubg-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\pubg-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\pubg-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\pubg-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\pubg-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\pubg-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\pubg-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\pubg-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\pubg-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\pubg-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\r6-siege-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\r6-siege-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\r6-siege-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\r6-siege-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\r6-siege-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\r6-siege-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\r6-siege-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\r6-siege-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\r6-siege-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\r6-siege-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rdr2-naturalist-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rdr2-naturalist-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rdr2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rdr2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rdr2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rdr2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rdr2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rdr2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rdr2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rdr2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rdr2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\rdr2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\re4-remake-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\re4-remake-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\re4-remake-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\re4-remake-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\re4-remake-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\re4-remake-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\re4-remake-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\re4-remake-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\re4-remake-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\re4-remake-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\re4-separate-ways-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\re4-separate-ways-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\remnant-2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\remnant-2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\remnant-2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\remnant-2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\remnant-2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\remnant-2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\remnant-2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\remnant-2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\remnant-2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\remnant-2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rocket-league-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rocket-league-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rocket-league-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rocket-league-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rocket-league-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rocket-league-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rocket-league-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rocket-league-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rocket-league-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\rocket-league-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rust-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rust-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rust-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rust-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rust-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rust-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rust-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\rust-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\rust-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\rust-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\skyrim-dawnguard-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\skyrim-dawnguard-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\skyrim-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\skyrim-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\skyrim-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\skyrim-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\skyrim-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\skyrim-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\skyrim-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\skyrim-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\skyrim-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\skyrim-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\stardew-ginger-island-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\stardew-ginger-island-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\stardew-valley-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\stardew-valley-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\stardew-valley-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\stardew-valley-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\stardew-valley-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\stardew-valley-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\stardew-valley-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\stardew-valley-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\stardew-valley-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\stardew-valley-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\starfield-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\starfield-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\starfield-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\starfield-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\starfield-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\starfield-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\starfield-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\starfield-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\starfield-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\starfield-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\street-fighter-6-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\street-fighter-6-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\street-fighter-6-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\street-fighter-6-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\street-fighter-6-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\street-fighter-6-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\street-fighter-6-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\street-fighter-6-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\street-fighter-6-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\street-fighter-6-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\terraria-journeys-end-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\terraria-journeys-end-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\terraria-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\terraria-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\terraria-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\terraria-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\terraria-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\terraria-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\terraria-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\terraria-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\terraria-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\terraria-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\tf2-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\tf2-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\tf2-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\tf2-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\tf2-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\tf2-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\tf2-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\tf2-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\tf2-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\tf2-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\the-witcher3-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\the-witcher3-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\the-witcher3-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\the-witcher3-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\the-witcher3-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\the-witcher3-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\the-witcher3-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\the-witcher3-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\the-witcher3-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\the-witcher3-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\valorant-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\valorant-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\valorant-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\valorant-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\valorant-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\valorant-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\valorant-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\valorant-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\valorant-video-1.mp4",
+      "PackagePath": "staticwebassets\\screenshots\\valorant-video-1.mp4"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\war-thunder-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\war-thunder-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\war-thunder-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\war-thunder-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\war-thunder-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\war-thunder-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\war-thunder-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\war-thunder-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\war-thunder-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\war-thunder-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\warframe-screenshot-1.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\warframe-screenshot-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\warframe-screenshot-2.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\warframe-screenshot-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\warframe-screenshot-3.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\warframe-screenshot-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\warframe-screenshot-4.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\warframe-screenshot-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\warframe-video-1.webm",
+      "PackagePath": "staticwebassets\\screenshots\\warframe-video-1.webm"
+    },
+    {
+      "Id": "C:\\Users\\gok_a\\OneDrive\\Masaüstü\\bitik proje\\Oyun Mağaza\\Oyun Mağaza\\wwwroot\\screenshots\\witcher3-hearts-of-stone-cover.jpg",
+      "PackagePath": "staticwebassets\\screenshots\\witcher3-hearts-of-stone-cover.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Oyun Mağaza.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Oyun Mağaza.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Oyun Mağaza.props",
+      "PackagePath": "build\\Oyun Mağaza.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Oyun Mağaza.props",
+      "PackagePath": "buildMultiTargeting\\Oyun Mağaza.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Oyun Mağaza.props",
+      "PackagePath": "buildTransitive\\Oyun Mağaza.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

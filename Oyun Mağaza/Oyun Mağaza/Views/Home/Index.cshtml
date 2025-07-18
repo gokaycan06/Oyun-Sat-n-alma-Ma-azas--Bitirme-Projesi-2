@@ -1,0 +1,876 @@
+@model Oyun_Mağaza.ViewModels.StoreIndexViewModel
+@{
+    ViewData["Title"] = "Mağaza";
+    Layout = "_StoreLayout";
+}
+
+<div class="game-slider-container">
+    <div class="game-slider">
+        @for (int idx = 0; idx < Model.SliderGames.Count; idx++)
+        {
+            var game = Model.SliderGames[idx];
+            <div class="slider-item" data-index="@idx">
+                <div class="slider-content">
+                    <!-- Sol: Cover Image -->
+                    <div class="slider-cover" onmouseover="pauseAutoSlide()" onmouseout="resumeAutoSlide()">
+                        <a href="/Game/Details/@game.Id" class="cover-link">
+                            <img src="@game.CoverUrl" alt="@game.Title" class="cover-image" id="cover-img-@idx">
+                        </a>
+                        <div class="game-info">
+                            <h3 class="game-title">@game.Title</h3>
+                            <div class="game-price">
+                                @if (game.Price == 0)
+                                {
+                                    <span class="free-text">Ücretsiz</span>
+                                }
+                                else
+                                {
+                                    <span>₺@game.Price.ToString("F2")</span>
+                                }
+                            </div>
+                            <div class="game-actions">
+                                @if (game.Price == 0)
+                                {
+                                    <button class="btn-buy" onclick="addToCart(@game.Id)">Sepete Ekle</button>
+                                }
+                                else
+                                {
+                                    <button class="btn-buy" onclick="addToCart(@game.Id)">Sepete Ekle</button>
+                                }
+                                <button class="btn-wishlist" onclick="addToWishlist(@game.Id)">İstek Listesine Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Orta: Video -->
+                    <div class="slider-video" onmouseover="pauseAutoSlide()" onmouseout="resumeAutoSlide()">
+                        @if (!string.IsNullOrEmpty(game.VideoUrl))
+                        {
+                            <div class="video-container">
+                                <video autoplay muted loop class="game-video" id="video-@idx">
+                                    <source src="@game.VideoUrl" type="video/webm">
+                                    <source src="@game.VideoUrl.Replace(".webm", ".mp4")" type="video/mp4">
+                                </video>
+                                <button class="sound-toggle" onclick="toggleSound(@idx)" id="sound-btn-@idx">🔇</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="no-video">Video Yok</div>
+                        }
+                    </div>
+                    
+                    <!-- Sağ: Screenshots -->
+                    <div class="slider-screenshots" onmouseover="pauseAutoSlide()" onmouseout="resumeAutoSlide()">
+                        @for (int i = 0; i < Math.Min(4, game.ScreenshotUrls.Count); i++)
+                        {
+                            <div class="screenshot-item">
+                                <img src="@game.ScreenshotUrls[i]" alt="@game.Title Screenshot @(i+1)" class="screenshot-image" 
+                                     onmouseover="changeCover(@idx, '@game.ScreenshotUrls[i]')" 
+                                     onmouseout="resetCover(@idx, '@game.CoverUrl')">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+    <!-- Slider Navigation -->
+    <div class="slider-nav">
+        <button class="slider-prev slider-arrow" onclick="changeSlide(-1)">❮</button>
+        <div class="slider-dots">
+            @for (int i = 0; i < Model.SliderGames.Count; i++)
+            {
+                <span class="dot @(i == 0 ? "active" : "")" onclick="currentSlide(@(i + 1))"></span>
+            }
+        </div>
+        <button class="slider-next slider-arrow" onclick="changeSlide(1)">❯</button>
+    </div>
+</div>
+
+<!-- Öne Çıkan Oyunlar Slider -->
+<div class="container mt-4">
+    <h2>Öne Çıkan Oyunlar</h2>
+    <div class="featured-games-slider">
+        <div class="featured-games-container">
+            @for (int i = 0; i < Model.FeaturedGames.Count; i++)
+            {
+                var game = Model.FeaturedGames[i];
+                <div class="featured-game-item">
+                    <div class="featured-game-card">
+                        <a href="/Game/Details/@game.Id" class="featured-game-cover-link">
+                            <img src="@game.CoverUrl" alt="@game.Title" class="featured-game-cover">
+                        </a>
+                        <div class="featured-game-info">
+                            <h5 class="featured-game-title">@game.Title</h5>
+                            <div class="featured-game-price">
+                                @if (game.Price == 0)
+                                {
+                                    <span class="free-text">Ücretsiz</span>
+                                }
+                                else
+                                {
+                                    <span>₺@game.Price.ToString("F2")</span>
+                                }
+                            </div>
+                            <div class="featured-game-actions">
+                                <button class="btn-buy-small" onclick="addToCart(@game.Id)">Sepete Ekle</button>
+                                <button class="btn-wishlist-small" onclick="addToWishlist(@game.Id)">❤</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="featured-prev" onclick="changeFeaturedSlide(-1)">❮</button>
+        <button class="featured-next" onclick="changeFeaturedSlide(1)">❯</button>
+    </div>
+</div>
+
+<!-- Bundle Slider -->
+<div class="container mt-4">
+    <h2>Özel Bundle'lar</h2>
+    <div class="bundle-slider">
+        <div class="bundle-container">
+            @for (int i = 0; i < Model.Bundles.Count; i++)
+            {
+                var bundle = Model.Bundles[i];
+                <div class="bundle-item">
+                    <div class="bundle-card" onclick="viewBundle(@bundle.BundleId)">
+                        <div class="bundle-cover">
+                            @if (bundle.GameCount == 1)
+                            {
+                                <!-- Tek oyun - tam resim -->
+                                <div class="bundle-cover-single">
+                                    <img src="@bundle.GameImages[0]" alt="@bundle.Name" class="bundle-image">
+                                </div>
+                            }
+                            else if (bundle.GameCount == 2)
+                            {
+                                <!-- İki oyun - yarı yarıya -->
+                                <div class="bundle-cover-split">
+                                    <div class="bundle-cover-left">
+                                        <img src="@bundle.GameImages[0]" alt="@bundle.GameNames[0]" class="bundle-image">
+                                    </div>
+                                    <div class="bundle-cover-right">
+                                        <img src="@bundle.GameImages[1]" alt="@bundle.GameNames[1]" class="bundle-image">
+                                    </div>
+                                </div>
+                            }
+                            else if (bundle.GameCount == 3)
+                            {
+                                <!-- Üç oyun - üçgen layout -->
+                                <div class="bundle-cover-triangle">
+                                    <div class="bundle-cover-top">
+                                        <img src="@bundle.GameImages[0]" alt="@bundle.GameNames[0]" class="bundle-image">
+                                    </div>
+                                    <div class="bundle-cover-bottom">
+                                        <div class="bundle-cover-bottom-left">
+                                            <img src="@bundle.GameImages[1]" alt="@bundle.GameNames[1]" class="bundle-image">
+                                        </div>
+                                        <div class="bundle-cover-bottom-right">
+                                            <img src="@bundle.GameImages[2]" alt="@bundle.GameNames[2]" class="bundle-image">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else if (bundle.GameCount >= 4)
+                            {
+                                <!-- Dört veya daha fazla oyun - grid layout -->
+                                <div class="bundle-cover-grid">
+                                    <div class="bundle-cover-grid-top">
+                                        <div class="bundle-cover-grid-top-left">
+                                            <img src="@bundle.GameImages[0]" alt="@bundle.GameNames[0]" class="bundle-image">
+                                        </div>
+                                        <div class="bundle-cover-grid-top-right">
+                                            <img src="@bundle.GameImages[1]" alt="@bundle.GameNames[1]" class="bundle-image">
+                                        </div>
+                                    </div>
+                                    <div class="bundle-cover-grid-bottom">
+                                        <div class="bundle-cover-grid-bottom-left">
+                                            <img src="@bundle.GameImages[2]" alt="@bundle.GameNames[2]" class="bundle-image">
+                                        </div>
+                                        <div class="bundle-cover-grid-bottom-right">
+                                            @if (bundle.GameCount > 4)
+                                            {
+                                                <div class="bundle-cover-more">
+                                                    <span>+@(bundle.GameCount - 3)</span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <img src="@bundle.GameImages[3]" alt="@bundle.GameNames[3]" class="bundle-image">
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @if (bundle.IsDiscounted)
+                            {
+                                <div class="bundle-discount-badge">
+                                    -%@bundle.DiscountPercentage.ToString("F0")
+                                </div>
+                            }
+                        </div>
+                        <div class="bundle-info">
+                            <h4 class="bundle-title">@bundle.Name</h4>
+                            <div class="bundle-games">
+                                <span class="bundle-game-count">@bundle.GameCount oyun</span>
+                                <div class="bundle-game-names">
+                                    @{
+                                        var gameNameCountHomeIndex = 0;
+                                    }
+                                    @foreach (var gameName in bundle.GameNames)
+                                    {
+                                        if (gameNameCountHomeIndex < 3)
+                                        {
+                                            <span class="bundle-game-name">@gameName</span>
+                                            gameNameCountHomeIndex++;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    @if (bundle.GameCount > 3)
+                                    {
+                                        <span class="bundle-game-name">+@(bundle.GameCount - 3) daha</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="bundle-price">
+                                @if (bundle.IsDiscounted)
+                                {
+                                    <span class="bundle-original-price">₺@bundle.Price.ToString("F2")</span>
+                                    <span class="bundle-current-price">₺@bundle.CurrentPrice.ToString("F2")</span>
+                                }
+                                else
+                                {
+                                    <span class="bundle-current-price">₺@bundle.Price.ToString("F2")</span>
+                                }
+                            </div>
+                            <button class="bundle-buy-btn" onclick="addBundleToCart(@bundle.BundleId)">Bundle'ı Sepete Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="bundle-prev" onclick="changeBundleSlide(-1)">❮</button>
+        <button class="bundle-next" onclick="changeBundleSlide(1)">❯</button>
+    </div>
+</div>
+
+<!-- Kategori Slider -->
+<div class="container mt-4">
+    <h2>Oyun Kategorileri</h2>
+    <div class="category-slider">
+        <div class="category-container">
+            @for (int i = 0; i < Model.Categories.Count; i++)
+            {
+                var category = Model.Categories[i];
+                <div class="category-item">
+                    <div class="category-card" onclick="navigateToCategory(@category.CategoryId)">
+                        <div class="category-background" style="background-image: url('@category.BackgroundImage')">
+                            <div class="category-overlay">
+                                <div class="category-content">
+                                    <h3 class="category-title">@category.Name</h3>
+                                    @if (!string.IsNullOrEmpty(category.Description))
+                                    {
+                                        <p class="category-description">@category.Description</p>
+                                    }
+                                    <button class="category-explore-btn">Keşfet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="category-prev" onclick="changeCategorySlide(-1)">❮</button>
+        <button class="category-next" onclick="changeCategorySlide(1)">❯</button>
+    </div>
+</div>
+
+<!-- Oyunlara Göz At -->
+<div class="container mt-4">
+    <h2>Oyunlara Göz At</h2>
+    <div class="browse-games-container">
+        <!-- Sol: Kategoriler -->
+        <div class="browse-categories">
+            <h4>Kategoriler</h4>
+            <div class="category-list">
+                <div class="category-item-small active" data-category-id="0">
+                    <span>Tümü</span>
+                </div>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <div class="category-item-small" data-category-id="@category.CategoryId">
+                        <span>@category.Name</span>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Sağ: Oyunlar -->
+        <div class="browse-games-content">
+            <!-- Arama Kutusu -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="gameSearch" placeholder="Oyun ara..." class="search-input">
+                    <button type="button" onclick="searchGames()" class="search-btn">🔍</button>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="browse-tabs">
+                <button class="browse-tab @(Model.BrowseGames.SelectedTab == "all" ? "active" : "")" 
+                        data-tab="all">Tümü</button>
+                <button class="browse-tab @(Model.BrowseGames.SelectedTab == "topsellers" ? "active" : "")" 
+                        data-tab="topsellers">En Çok Satanlar</button>
+            </div>
+
+            <!-- Oyunlar Grid -->
+            <div class="browse-games-grid">
+                <!-- Tümü Tab -->
+                <div id="tab-all" class="tab-content @(Model.BrowseGames.SelectedTab == "all" ? "active" : "")">
+                    @foreach (var game in Model.BrowseGames.AllGames)
+                    {
+                        <div class="browse-game-card">
+                            <a href="/Game/Details/@game.Id" class="browse-game-cover-link">
+                                <img src="@game.CoverUrl" alt="@game.Title" class="browse-game-cover">
+                            </a>
+                            <div class="browse-game-info">
+                                <h5 class="browse-game-title">@game.Title</h5>
+                                <div class="browse-game-price">
+                                    @if (game.Price == 0)
+                                    {
+                                        <span class="free-text">Ücretsiz</span>
+                                    }
+                                    else
+                                    {
+                                        <span>₺@game.Price.ToString("F2")</span>
+                                    }
+                                </div>
+                                <div class="browse-game-actions">
+                                    <button class="btn-buy-small" onclick="addToCart(@game.Id)">Sepete Ekle</button>
+                                    <button class="btn-wishlist-small" onclick="addToWishlist(@game.Id)">❤</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- En Çok Satanlar Tab -->
+                <div id="tab-topsellers" class="tab-content @(Model.BrowseGames.SelectedTab == "topsellers" ? "active" : "")">
+                    @foreach (var game in Model.BrowseGames.TopSellers)
+                    {
+                        <div class="browse-game-card">
+                            <a href="/Game/Details/@game.Id" class="browse-game-cover-link">
+                                <img src="@game.CoverUrl" alt="@game.Title" class="browse-game-cover">
+                            </a>
+                            <div class="browse-game-info">
+                                <h5 class="browse-game-title">@game.Title</h5>
+                                <div class="browse-game-price">
+                                    @if (game.Price == 0)
+                                    {
+                                        <span class="free-text">Ücretsiz</span>
+                                    }
+                                    else
+                                    {
+                                        <span>₺@game.Price.ToString("F2")</span>
+                                    }
+                                </div>
+                                <div class="browse-game-actions">
+                                    <button class="btn-buy-small" onclick="addToCart(@game.Id)">Sepete Ekle</button>
+                                    <button class="btn-wishlist-small" onclick="addToWishlist(@game.Id)">❤</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let slideIndex = 1;
+        let autoSlideInterval;
+        let isPaused = false;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.querySelectorAll('.slider-item');
+            let dots = document.querySelectorAll('.dot');
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+
+            // Tüm videoları durdur
+            let allVideos = document.querySelectorAll('.game-video');
+            allVideos.forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+            });
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+
+            // Aktif slide'ın videosunu başlat
+            let activeVideo = slides[slideIndex-1].querySelector('.game-video');
+            if (activeVideo) {
+                activeVideo.play();
+            }
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                if (!isPaused) changeSlide(1);
+            }, 5000);
+        }
+        function pauseAutoSlide() {
+            isPaused = true;
+        }
+        function resumeAutoSlide() {
+            isPaused = false;
+        }
+        startAutoSlide();
+
+        // Screenshot hover ile cover değişimi
+        function changeCover(idx, imgUrl) {
+            const cover = document.getElementById('cover-img-' + idx);
+            if (cover) cover.src = imgUrl;
+        }
+        function resetCover(idx, originalUrl) {
+            const cover = document.getElementById('cover-img-' + idx);
+            if (cover) cover.src = originalUrl;
+        }
+
+        // Ses açma/kapama
+        function toggleSound(idx) {
+            const video = document.getElementById('video-' + idx);
+            const soundBtn = document.getElementById('sound-btn-' + idx);
+            
+            if (video.muted) {
+                video.muted = false;
+                soundBtn.textContent = '🔊';
+            } else {
+                video.muted = true;
+                soundBtn.textContent = '🔇';
+            }
+        }
+        
+        // Satın alma fonksiyonu
+        function buyGame(gameId) {
+            // Burada satın alma işlemi yapılacak
+            alert('Oyun satın alma işlemi başlatılıyor... Game ID: ' + gameId);
+            // Gerçek uygulamada burada AJAX ile satın alma işlemi yapılır
+        }
+        
+        // İstek listesine ekleme fonksiyonu
+        function addToWishlist(gameId) {
+            // Burada istek listesine ekleme işlemi yapılacak
+            alert('Oyun istek listesine ekleniyor... Game ID: ' + gameId);
+            // Gerçek uygulamada burada AJAX ile istek listesine ekleme işlemi yapılır
+        }
+
+        // Öne çıkan oyunlar slider
+        let featuredSlideIndex = 0;
+        const featuredSlidesToShow = 4;
+        
+        function changeFeaturedSlide(direction) {
+            const container = document.querySelector('.featured-games-container');
+            const items = document.querySelectorAll('.featured-game-item');
+            const totalSlides = items.length;
+            
+            featuredSlideIndex += direction;
+            
+            if (featuredSlideIndex < 0) {
+                featuredSlideIndex = totalSlides - featuredSlidesToShow;
+            }
+            if (featuredSlideIndex > totalSlides - featuredSlidesToShow) {
+                featuredSlideIndex = 0;
+            }
+            
+            const translateX = -featuredSlideIndex * (100 / featuredSlidesToShow);
+            container.style.transform = `translateX(${translateX}%)`;
+        }
+
+        // Kategori slider
+        let categorySlideIndex = 0;
+        const categoriesToShow = 5;
+        function changeCategorySlide(direction) {
+            const container = document.querySelector('.category-container');
+            const items = document.querySelectorAll('.category-item');
+            const totalSlides = items.length;
+            categorySlideIndex += direction;
+            if (categorySlideIndex < 0) {
+                categorySlideIndex = totalSlides - categoriesToShow;
+            }
+            if (categorySlideIndex > totalSlides - categoriesToShow) {
+                categorySlideIndex = 0;
+            }
+            const translateX = -categorySlideIndex * (100 / categoriesToShow);
+            container.style.transform = `translateX(${translateX}%)`;
+        }
+        function navigateToCategory(categoryId) {
+            window.location.href = '/Category/Details/' + categoryId;
+        }
+
+        // Bundle slider
+        let bundleSlideIndex = 0;
+        const bundlesToShow = 4;
+        function changeBundleSlide(direction) {
+            const container = document.querySelector('.bundle-container');
+            const items = document.querySelectorAll('.bundle-item');
+            const totalSlides = items.length;
+            const maxIndex = Math.max(0, totalSlides - bundlesToShow);
+            bundleSlideIndex += direction;
+            if (bundleSlideIndex < 0) bundleSlideIndex = maxIndex;
+            if (bundleSlideIndex > maxIndex) bundleSlideIndex = 0;
+            const translateX = -(bundleSlideIndex * (100 / bundlesToShow));
+            container.style.transform = `translateX(${translateX}%)`;
+        }
+        function viewBundle(bundleId) {
+            window.location.href = '/Bundle/Details/' + bundleId;
+        }
+
+        // Browse Games fonksiyonları
+        function filterByCategory(categoryId) {
+            // Kategori seçimini güncelle
+            document.querySelectorAll('.category-item-small').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.category-item-small').classList.add('active');
+            
+            // AJAX ile oyunları yükle
+            loadGamesByCategory(categoryId);
+        }
+
+        function switchTab(tabName) {
+            // Tab seçimini güncelle
+            document.querySelectorAll('.browse-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Tab içeriğini göster/gizle
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+
+        function loadGamesByCategory(categoryId) {
+            // CSRF token'ı al
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            if (!token) {
+                console.error('CSRF token bulunamadı');
+                return;
+            }
+            
+            // AJAX ile kategoriye göre oyunları yükle
+            fetch('/Home/GetGamesByCategoryAjax', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token
+                },
+                body: JSON.stringify({ categoryId: categoryId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateGamesGrid(data.games);
+                } else {
+                    console.error('Error loading games:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function updateGamesGrid(games) {
+            const tabAll = document.getElementById('tab-all');
+            tabAll.innerHTML = '';
+            
+            games.forEach(game => {
+                const gameCard = `
+                    <div class="browse-game-card">
+                        <a href="/Game/Details/${game.id}" class="browse-game-cover-link">
+                            <img src="${game.coverUrl}" alt="${game.title}" class="browse-game-cover">
+                        </a>
+                        <div class="browse-game-info">
+                            <h5 class="browse-game-title">${game.title}</h5>
+                            <div class="browse-game-price">
+                                ${game.price === 0 ? '<span class="free-text">Ücretsiz</span>' : `₺${game.price.toFixed(2)}`}
+                            </div>
+                            <div class="browse-game-actions">
+                                <button class="btn-buy-small" onclick="addToCart(${game.id})">Sepete Ekle</button>
+                                <button class="btn-wishlist-small" onclick="addToWishlist(${game.id})">❤</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                tabAll.innerHTML += gameCard;
+            });
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Arama kutusu event listener'ları
+            const searchInput = document.getElementById('gameSearch');
+            if (searchInput) {
+                // Enter tuşu ile arama
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchGames();
+                    }
+                });
+
+                // Gerçek zamanlı arama (500ms gecikme ile)
+                let searchTimeout;
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(searchGames, 500);
+                });
+            }
+
+            // Kategori filtreleme
+            document.querySelectorAll('.category-item-small').forEach(item => {
+                item.addEventListener('click', function() {
+                    const categoryId = parseInt(this.getAttribute('data-category-id'));
+                    
+                    // Kategori seçimini güncelle
+                    document.querySelectorAll('.category-item-small').forEach(cat => {
+                        cat.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Arama kutusunu temizle
+                    document.getElementById('gameSearch').value = '';
+                    
+                    // AJAX ile oyunları yükle
+                    loadGamesByCategory(categoryId);
+                });
+            });
+
+            // Tab değiştirme
+            document.querySelectorAll('.browse-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Tab seçimini güncelle
+                    document.querySelectorAll('.browse-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Tab içeriğini göster/gizle
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById('tab-' + tabName).classList.add('active');
+                    
+                    // Arama kutusunu temizle ve tüm oyunları göster
+                    document.getElementById('gameSearch').value = '';
+                    searchGames();
+                });
+            });
+        });
+
+        // Arama fonksiyonu
+        function searchGames() {
+            const searchTerm = document.getElementById('gameSearch').value.toLowerCase().trim();
+            if (searchTerm === '') {
+                // Arama boşsa kategoriye göre oyunları yükle
+                const activeCategory = document.querySelector('.category-item-small.active');
+                const categoryId = activeCategory ? parseInt(activeCategory.getAttribute('data-category-id')) : 0;
+                loadGamesByCategory(categoryId);
+                return;
+            }
+
+            // CSRF token'ı al
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            if (!token) {
+                console.error('CSRF token bulunamadı');
+                return;
+            }
+
+            fetch('/Home/GetGamesBySearchAjax', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token
+                },
+                body: JSON.stringify({ query: searchTerm })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateGamesGrid(data.games);
+                } else {
+                    showNoResultsMessage();
+                }
+            })
+            .catch(error => {
+                showNoResultsMessage();
+            });
+        }
+
+        // Sonuç bulunamadı mesajını göster
+        function showNoResultsMessage() {
+            let noResults = document.getElementById('no-results-message');
+            if (!noResults) {
+                noResults = document.createElement('div');
+                noResults.id = 'no-results-message';
+                noResults.className = 'no-results-message';
+                noResults.innerHTML = '<p>Aradığınız oyun bulunamadı.</p>';
+                document.querySelector('.browse-games-grid').appendChild(noResults);
+            }
+            noResults.style.display = 'block';
+        }
+
+        // Sonuç bulunamadı mesajını gizle
+        function hideNoResultsMessage() {
+            const noResults = document.getElementById('no-results-message');
+            if (noResults) {
+                noResults.style.display = 'none';
+            }
+        }
+
+        // Sepete oyun ekleme
+        function addToCart(gameId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Cart/AddToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ gameId: gameId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    
+                    // Sepet dropdown'ı açıksa güncelle
+                    const cartMenu = document.getElementById('cartMenu');
+                    if (cartMenu && cartMenu.classList.contains('active')) {
+                        loadCartItems();
+                    }
+                    
+                    // Başarı mesajı göster
+                    showNotification('Oyun sepete eklendi!', 'success');
+                } else {
+                    showNotification(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                showNotification('Bir hata oluştu.', 'error');
+            });
+        }
+
+        // Bundle'ı sepete ekleme
+        function addBundleToCart(bundleId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Cart/AddBundleToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ bundleId: bundleId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    
+                    // Sepet dropdown'ı açıksa güncelle
+                    const cartMenu = document.getElementById('cartMenu');
+                    if (cartMenu && cartMenu.classList.contains('active')) {
+                        loadCartItems();
+                    }
+                    
+                    // Başarı mesajı göster
+                    showNotification('Bundle sepete eklendi!', 'success');
+                } else {
+                    showNotification(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                showNotification('Bir hata oluştu.', 'error');
+            });
+        }
+
+        // Sepet sayısını güncelleme
+        function updateCartBadge(count) {
+            const badge = document.querySelector('.cart-badge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+
+        // Bildirim gösterme
+        function showNotification(message, type = 'info') {
+            // Mevcut bildirimi kaldır
+            const existingNotification = document.querySelector('.notification-toast');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Yeni bildirim oluştur
+            const notification = document.createElement('div');
+            notification.className = `notification-toast notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-message">${message}</span>
+                    <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+                </div>
+            `;
+
+            // Bildirimi sayfaya ekle
+            document.body.appendChild(notification);
+
+            // 3 saniye sonra otomatik kaldır
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+    </script>
+}
+
+
+

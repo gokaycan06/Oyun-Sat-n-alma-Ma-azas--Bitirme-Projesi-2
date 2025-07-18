@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EGCGP Admin</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/store.css?v=@DateTime.Now.Ticks" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Steam Navbar -->
+    <nav class="steam-navbar">
+        <div class="steam-navbar-left">
+            <span class="steam-logo">EGCGP</span>
+            <a href="/Home/Index" class="steam-tab">MAĞAZA</a>
+            <a href="/Home/Library" class="steam-tab">KÜTÜPHANE</a>
+            <a href="/Home/Friends" class="steam-tab">ARKADAŞLAR</a>
+            <a href="/Home/Profile" class="steam-tab">@ViewBag.UserDisplayName?.ToUpper()</a>
+        </div>
+        <div class="steam-navbar-right">
+            <!-- Bildirimler -->
+            <div class="steam-notifications">
+                <i class="fas fa-bell" onclick="toggleNotifications()"></i>
+                <span class="notification-badge" id="notificationBadge">0</span>
+                <div class="notifications-dropdown" id="notificationsMenu">
+                    <div class="notifications-header">
+                        <h4>Bildirimler</h4>
+                        <button class="mark-all-read" onclick="markAllNotificationsAsRead()">Tümünü Okundu İşaretle</button>
+                    </div>
+                    <div class="notifications-list" id="notificationsList">
+                        <!-- Bildirimler buraya dinamik olarak yüklenecek -->
+                    </div>
+                    <div class="notifications-footer">
+                        <span>Tüm bildirimleri görüntüle</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sepet -->
+            <div class="steam-cart">
+                <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
+                <span class="cart-badge">2</span>
+                <div class="cart-dropdown" id="cartMenu">
+                    <div class="cart-header">
+                        <h4>Sepetim</h4>
+                        <span class="cart-item-count">2 ürün</span>
+                    </div>
+                    <div class="cart-items">
+                        <div class="cart-item">
+                            <img src="/games/cs2-cover.jpg" alt="CS2" class="cart-item-image">
+                            <div class="cart-item-info">
+                                <span class="cart-item-title">Counter-Strike 2</span>
+                                <span class="cart-item-price">₺0.00</span>
+                            </div>
+                            <button class="cart-item-remove" onclick="removeFromCart(1)">×</button>
+                        </div>
+                        <div class="cart-item">
+                            <img src="/games/valorant-cover.jpg" alt="Valorant" class="cart-item-image">
+                            <div class="cart-item-info">
+                                <span class="cart-item-title">Valorant</span>
+                                <span class="cart-item-price">₺0.00</span>
+                            </div>
+                            <button class="cart-item-remove" onclick="removeFromCart(2)">×</button>
+                        </div>
+                    </div>
+                    <div class="cart-footer">
+                        <div class="cart-total">
+                            <span>Toplam:</span>
+                            <span class="cart-total-price">₺0.00</span>
+                        </div>
+                        <button class="btn-checkout" onclick="checkout()">Satın Al</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kullanıcı Bilgileri -->
+            <div class="steam-user-info">
+                <div class="steam-user-details">
+                    <span class="steam-user-name">@ViewBag.UserDisplayName</span>
+                    <span class="steam-user-balance">₺@ViewBag.WalletBalance</span>
+                </div>
+                <div class="steam-user-dropdown">
+                    <img src="/images/avatars/default-avatar.jpg" class="steam-user-avatar" alt="Avatar" onclick="toggleUserMenu()" />
+                    <div class="steam-user-menu" id="userMenu">
+                        <div class="menu-item" onclick="navigateToProfile()">
+                            <i class="fas fa-user"></i>
+                            <span>Profil</span>
+                        </div>
+                        <div class="menu-item" onclick="navigateToWallet()">
+                            <i class="fas fa-wallet"></i>
+                            <span>Bakiye Yükle</span>
+                        </div>
+                        <div class="menu-separator"></div>
+                        <div class="menu-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Çıkış Yap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>EGCGP Admin</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="@(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")">
+                    <a href="@Url.Action("Index", "Admin")">
+                        <i class="fas fa-gamepad"></i>
+                        Oyunlar
+                    </a>
+                </li>
+                <li>
+                    <a href="#developersSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-code"></i>
+                        Geliştiriciler
+                    </a>
+                    <ul class="collapse list-unstyled" id="developersSubmenu">
+                        <li>
+                            <a href="#">Geliştirici Listesi</a>
+                        </li>
+                        <li>
+                            <a href="#">Yeni Geliştirici</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#publishersSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-building"></i>
+                        Yayıncılar
+                    </a>
+                    <ul class="collapse list-unstyled" id="publishersSubmenu">
+                        <li>
+                            <a href="#">Yayıncı Listesi</a>
+                        </li>
+                        <li>
+                            <a href="#">Yeni Yayıncı</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#categoriesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tags"></i>
+                        Kategoriler
+                    </a>
+                    <ul class="collapse list-unstyled" id="categoriesSubmenu">
+                        <li>
+                            <a href="#">Kategori Listesi</a>
+                        </li>
+                        <li>
+                            <a href="#">Yeni Kategori</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#usersSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        Kullanıcılar
+                    </a>
+                    <ul class="collapse list-unstyled" id="usersSubmenu">
+                        <li>
+                            <a href="#">Kullanıcı Listesi</a>
+                        </li>
+                        <li>
+                            <a href="#">Yeni Kullanıcı</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                    @User.FindFirst("DisplayName")?.Value
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Home")">
+                                            <i class="fas fa-store"></i> Mağazaya Git
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form asp-controller="Account" asp-action="Logout" method="post">
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/admin.js" asp-append-version="true"></script>
+    <script>
+        // Kullanıcı menüsü toggle fonksiyonu
+        function toggleUserMenu() {
+            const menu = document.getElementById('userMenu');
+            if (menu) {
+                menu.classList.toggle('active');
+                console.log('Menü toggle edildi:', menu.classList.contains('active'));
+            }
+        }
+
+        // Bildirimler toggle fonksiyonu
+        function toggleNotifications() {
+            const menu = document.getElementById('notificationsMenu');
+            if (menu) {
+                menu.classList.toggle('active');
+                if (menu.classList.contains('active')) {
+                    loadNotifications();
+                }
+            }
+        }
+
+        // Bildirimleri yükle
+        function loadNotifications() {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Notification/GetNotifications', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateNotificationsList(data.notifications);
+                    updateNotificationBadge(data.count);
+                }
+            })
+            .catch(error => {
+                console.error('Bildirimler yüklenirken hata:', error);
+            });
+        }
+
+        // Bildirim listesini güncelle
+        function updateNotificationsList(notifications) {
+            const list = document.getElementById('notificationsList');
+            if (!list) return;
+
+            if (notifications.length === 0) {
+                list.innerHTML = '<div class="no-notifications">Bildiriminiz yok</div>';
+                return;
+            }
+
+            list.innerHTML = '';
+            notifications.forEach(notification => {
+                const notificationItem = document.createElement('div');
+                notificationItem.className = 'notification-item';
+                notificationItem.onclick = () => markNotificationAsRead(notification.id, notification.type, notification.relatedId);
+                
+                let icon = 'fas fa-bell';
+                if (notification.type === 'message') {
+                    icon = 'fas fa-envelope';
+                } else if (notification.type === 'friend_request') {
+                    icon = 'fas fa-user-plus';
+                }
+
+                notificationItem.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-message">${notification.message}</div>
+                        <div class="notification-time">${notification.createdAt}</div>
+                    </div>
+                `;
+                
+                list.appendChild(notificationItem);
+            });
+        }
+
+        // Bildirim sayısını güncelle
+        function updateNotificationBadge(count) {
+            const badge = document.getElementById('notificationBadge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+
+        // Bildirimi okundu olarak işaretle
+        function markNotificationAsRead(notificationId, type, relatedId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Notification/MarkAsRead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                },
+                body: JSON.stringify({ notificationId, type, relatedId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadNotifications();
+                }
+            })
+            .catch(error => {
+                console.error('Bildirim işaretlenirken hata:', error);
+            });
+        }
+
+        // Tüm bildirimleri okundu olarak işaretle
+        function markAllNotificationsAsRead() {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Notification/MarkAllAsRead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadNotifications();
+                }
+            })
+            .catch(error => {
+                console.error('Bildirimler işaretlenirken hata:', error);
+            });
+        }
+
+        // Sepet toggle fonksiyonu
+        function toggleCart() {
+            const menu = document.getElementById('cartMenu');
+            if (menu) {
+                menu.classList.toggle('active');
+            }
+        }
+
+        // Sepetten ürün kaldır
+        function removeFromCart(itemId) {
+            console.log('Sepetten kaldırıldı:', itemId);
+            // Sepet işlemleri burada yapılacak
+        }
+
+        // Satın alma işlemi
+        function checkout() {
+            console.log('Satın alma işlemi başlatıldı');
+            // Ödeme işlemleri burada yapılacak
+        }
+
+        // Profil sayfasına git
+        function navigateToProfile() {
+            window.location.href = '/Home/Profile';
+        }
+
+        // Cüzdan sayfasına git
+        function navigateToWallet() {
+            window.location.href = '/Home/Wallet';
+        }
+
+        // Çıkış yap
+        function logout() {
+            window.location.href = '/Account/Logout';
+        }
+
+        // Sayfa yüklendiğinde menüleri kapat
+        document.addEventListener('click', function(event) {
+            const userMenu = document.getElementById('userMenu');
+            const notificationsMenu = document.getElementById('notificationsMenu');
+            const cartMenu = document.getElementById('cartMenu');
+            const userAvatar = document.querySelector('.steam-user-avatar');
+            const notificationIcon = document.querySelector('.steam-notifications i');
+            const cartIcon = document.querySelector('.steam-cart i');
+
+            // Kullanıcı menüsü
+            if (userMenu && userMenu.classList.contains('active') && !userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
+                userMenu.classList.remove('active');
+            }
+
+            // Bildirimler menüsü
+            if (notificationsMenu && notificationsMenu.classList.contains('active') && !notificationIcon.contains(event.target) && !notificationsMenu.contains(event.target)) {
+                notificationsMenu.classList.remove('active');
+            }
+
+            // Sepet menüsü
+            if (cartMenu && cartMenu.classList.contains('active') && !cartIcon.contains(event.target) && !cartMenu.contains(event.target)) {
+                cartMenu.classList.remove('active');
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> 

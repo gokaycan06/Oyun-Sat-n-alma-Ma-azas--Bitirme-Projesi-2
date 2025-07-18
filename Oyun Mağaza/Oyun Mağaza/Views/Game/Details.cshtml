@@ -1,0 +1,494 @@
+@model Oyun_Mağaza.ViewModels.GameDetailViewModel
+@{
+    ViewData["Title"] = Model.Game.Title;
+    Layout = "_StoreLayout";
+}
+
+<div class="game-details-container">
+    <!-- Oyun Başlığı ve Temel Bilgiler -->
+    <div class="game-header">
+        <div class="game-main-content">
+            <!-- Sol: Video -->
+            <div class="game-video-section">
+                @if (Model.Game.Videos != null && Model.Game.Videos.Count > 0)
+                {
+                    <div class="main-video-container">
+                        <video autoplay muted loop class="main-game-video" id="main-video">
+                            <source src="@Model.Game.Videos.First().Url" type="video/webm">
+                            <source src="@Model.Game.Videos.First().Url.Replace(".webm", ".mp4")" type="video/mp4">
+                        </video>
+                        <button class="sound-toggle-main" onclick="toggleMainSound()" id="main-sound-btn">🔇</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="no-video-main">
+                        <div class="no-video-placeholder">
+                            <span>Video Yok</span>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Sağ: Cover -->
+            <div class="game-cover-section">
+                <img src="/games/@Model.Game.CoverImage" alt="@Model.Game.Title" class="game-detail-cover">
+                
+                <!-- Cover Altı: Kısa Oyun Bilgileri -->
+                <div class="game-info-under-cover">
+                    <div class="game-categories-under-cover">
+                        @foreach (var gameCategory in Model.Game.GameCategories)
+                        {
+                            <span class="category-tag-small">@gameCategory.Category.Name</span>
+                        }
+                    </div>
+                    
+                    <!-- Cover altında kısa açıklama -->
+                    <div class="game-short-description">
+                        <p>@(Model.Game.Description.Length > 200 ? Model.Game.Description.Substring(0, 200) + "..." : Model.Game.Description)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Altı: Ekran Görüntüleri -->
+        <div class="game-screenshots-row">
+            @if (Model.Game.Screenshots != null && Model.Game.Screenshots.Count > 0)
+            {
+                @for (int i = 0; i < Math.Min(4, Model.Game.Screenshots.Count); i++)
+                {
+                    var screenshot = Model.Game.Screenshots.ElementAt(i);
+                    <div class="screenshot-item-row">
+                        <img src="@screenshot.ImageUrl" alt="@Model.Game.Title Screenshot @(i+1)" class="screenshot-image-row">
+                    </div>
+                }
+            }
+            else
+            {
+                <!-- Ekran görüntüsü yoksa placeholder göster -->
+                @for (int i = 0; i < 4; i++)
+                {
+                    <div class="screenshot-item-row">
+                        <div class="screenshot-placeholder">
+                            <span>Screenshot @(i+1)</span>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <!-- Oyun Bilgileri ve Satın Alma -->
+    <div class="game-info-section">
+        <h1 class="game-detail-title">@Model.Game.Title</h1>
+        
+        <div class="game-meta">
+            @if (Model.Game.Developer != null)
+            {
+                <span class="developer">@Model.Game.Developer.Name</span>
+            }
+            @if (Model.Game.Publisher != null)
+            {
+                <span class="publisher">@Model.Game.Publisher.Name</span>
+            }
+            <span class="release-date">@(Model.Game.ReleaseDate.ToString("dd.MM.yyyy"))</span>
+        </div>
+
+        <div class="game-price-section">
+            <div class="current-price">
+                @if (Model.Game.Price == 0)
+                {
+                    <span class="free-text">Ücretsiz</span>
+                }
+                else
+                {
+                    <span class="price">₺@Model.Game.Price.ToString("F2")</span>
+                }
+            </div>
+        </div>
+
+        <div class="game-actions">
+            @if (Model.IsOwned)
+            {
+                <button class="btn-play" onclick="playGame(@Model.Game.GameId)">
+                    @if (Model.IsInstalled)
+                    {
+                        <span>Oyna</span>
+                    }
+                    else
+                    {
+                        <span>Yükle</span>
+                    }
+                </button>
+                @if (Model.PlayTime.HasValue)
+                {
+                    <div class="play-time">
+                        <span>Oynama Süresi: @Model.PlayTime.Value.ToString(@"hh\:mm")</span>
+                    </div>
+                }
+            }
+            else
+            {
+                @if (Model.Game.Price == 0)
+                {
+                    <button class="btn-buy-large" onclick="addToCart(@Model.Game.GameId)">Ücretsiz İndir</button>
+                }
+                else
+                {
+                    <button class="btn-buy-large" onclick="addToCart(@Model.Game.GameId)">Sepete Ekle</button>
+                }
+                <button class="btn-wishlist-large" onclick="addToWishlist(@Model.Game.GameId)">İstek Listesine Ekle</button>
+            }
+        </div>
+    </div>
+
+    <!-- Detaylı Oyun Açıklaması -->
+    <div class="game-description-section">
+        <h3>Oyun Hakkında</h3>
+        <div class="game-description-content">
+            <p>@Model.Game.Description</p>
+        </div>
+    </div>
+
+    <!-- Oyun Dilleri -->
+    @if (Model.Game.GameLanguages != null && Model.Game.GameLanguages.Count > 0)
+    {
+        <div class="game-languages-section">
+            <h3>Desteklenen Diller</h3>
+            <div class="languages-grid">
+                @foreach (var lang in Model.Game.GameLanguages)
+                {
+                    <div class="language-item">
+                        <h4>@lang.Language</h4>
+                        <div class="language-features">
+                            @if (lang.Interface)
+                            {
+                                <span class="language-feature">Arayüz</span>
+                            }
+                            @if (lang.Subtitles)
+                            {
+                                <span class="language-feature">Altyazı</span>
+                            }
+                            @if (lang.Audio)
+                            {
+                                <span class="language-feature">Seslendirme</span>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <!-- Değerlendirmeler ve İncelemeler -->
+    <div class="game-reviews-section">
+        <div class="reviews-header-main">
+            <h3>Değerlendirmeler ve İncelemeler</h3>
+            @if (Model.IsOwned)
+            {
+                <button class="btn-add-review" onclick="addReview(@Model.Game.GameId)">
+                    <i class="fas fa-star"></i> İnceleme Ekle
+                </button>
+            }
+        </div>
+        
+        @if (Model.Game.Reviews != null && Model.Game.Reviews.Count > 0)
+        {
+            <div class="reviews-container">
+                <div class="reviews-header">
+                    <h4>Kullanıcı Değerlendirmeleri</h4>
+                    <div class="average-rating">
+                        @{
+                            var avgRating = Model.Game.Reviews.Average(r => r.Rating);
+                            var reviewCount = Model.Game.Reviews.Count();
+                        }
+                        <span class="rating-score">@avgRating.ToString("F1")</span>
+                        <div class="rating-stars">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <span class="star @(i <= avgRating ? "filled" : "")">★</span>
+                            }
+                        </div>
+                        <span class="review-count">(@reviewCount değerlendirme)</span>
+                    </div>
+                </div>
+                
+                <div class="reviews-list">
+                    @{
+                        var reviewCountGameDetails = 0;
+                    }
+                    @foreach (var review in Model.Game.Reviews.OrderByDescending(r => r.ReviewDate))
+                    {
+                        if (reviewCountGameDetails < 10)
+                        {
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <span class="reviewer-name">@review.User.Username</span>
+                                        @if (review.IsVerifiedPurchase)
+                                        {
+                                            <span class="verified-badge">✓ Doğrulanmış Satın Alma</span>
+                                        }
+                                    </div>
+                                    <span class="review-date">@review.ReviewDate.ToString("dd.MM.yyyy")</span>
+                                </div>
+                                <div class="review-rating">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <span class="star @(i <= review.Rating ? "filled" : "")">★</span>
+                                    }
+                                    @if (review.IsRecommended)
+                                    {
+                                        <span class="recommended-badge">Önerilen</span>
+                                    }
+                                </div>
+                                <p class="review-text">@review.Content</p>
+                                @if (review.IsEdited)
+                                {
+                                    <div class="review-edited">
+                                        <small>Düzenlendi: @review.LastEditDate?.ToString("dd.MM.yyyy HH:mm")</small>
+                                    </div>
+                                }
+                            </div>
+                            reviewCountGameDetails++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="no-reviews">
+                <p>Bu oyun için henüz değerlendirme bulunmuyor.</p>
+                @if (Model.IsOwned)
+                {
+                    <p>İlk incelemeyi siz yazın!</p>
+                }
+            </div>
+        }
+    </div>
+
+    <!-- DLC'ler -->
+    @if (Model.DLCs != null && Model.DLCs.Count > 0)
+    {
+        <div class="dlc-section">
+            <h3>DLC'ler</h3>
+            <div class="dlc-container">
+                @foreach (var dlc in Model.DLCs)
+                {
+                    <div class="dlc-item">
+                        <div class="dlc-cover">
+                            <img src="/games/@dlc.CoverImage" alt="@dlc.Name" class="dlc-cover-image">
+                        </div>
+                        <div class="dlc-info">
+                            <h4 class="dlc-name">@dlc.Name</h4>
+                            <p class="dlc-description">@dlc.Description</p>
+                            <div class="dlc-meta">
+                                <span class="dlc-release-date">@dlc.ReleaseDate.ToString("dd.MM.yyyy")</span>
+                            </div>
+                            <div class="dlc-price-section">
+                                @if (dlc.Price == 0)
+                                {
+                                    <span class="dlc-price-free">Ücretsiz</span>
+                                }
+                                else
+                                {
+                                    <span class="dlc-price">₺@dlc.Price.ToString("F2")</span>
+                                }
+                            </div>
+                            <div class="dlc-actions">
+                                @if (Model.IsOwned)
+                                {
+                                    <button class="btn-dlc-download" onclick="downloadDLC(@dlc.DLCId)">
+                                        <i class="fas fa-download"></i> İndir
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button class="btn-dlc-buy" onclick="addDLCToCart(@dlc.DLCId)">
+                                        @if (dlc.Price == 0)
+                                        {
+                                            <span>Ücretsiz İndir</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Sepete Ekle</span>
+                                        }
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <!-- Sistem Gereksinimleri -->
+    @if (Model.Game.SystemRequirements != null && Model.Game.SystemRequirements.Count > 0)
+    {
+        <div class="system-requirements-section">
+            <h3>Sistem Gereksinimleri</h3>
+            <div class="requirements-container">
+                @foreach (var req in Model.Game.SystemRequirements)
+                {
+                    <div class="requirement-item">
+                        <h4>@req.Type</h4>
+                        <div class="requirement-details">
+                            <div class="requirement-row">
+                                <span class="requirement-label">İşletim Sistemi:</span>
+                                <span class="requirement-value">@req.OS</span>
+                            </div>
+                            <div class="requirement-row">
+                                <span class="requirement-label">İşlemci:</span>
+                                <span class="requirement-value">@req.Processor</span>
+                            </div>
+                            <div class="requirement-row">
+                                <span class="requirement-label">Bellek:</span>
+                                <span class="requirement-value">@req.Memory</span>
+                            </div>
+                            <div class="requirement-row">
+                                <span class="requirement-label">Ekran Kartı:</span>
+                                <span class="requirement-value">@req.Graphics</span>
+                            </div>
+                            <div class="requirement-row">
+                                <span class="requirement-label">Depolama:</span>
+                                <span class="requirement-value">@req.Storage</span>
+                            </div>
+                            @if (!string.IsNullOrEmpty(req.AdditionalNotes))
+                            {
+                                <div class="requirement-row">
+                                    <span class="requirement-label">Ek Notlar:</span>
+                                    <span class="requirement-value">@req.AdditionalNotes</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function addToCart(gameId) {
+            // Sepete ekleme işlemi
+            fetch('/Cart/AddToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ gameId: gameId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    alert('Oyun sepete eklendi!');
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Bir hata oluştu.');
+            });
+        }
+
+        // Sepet sayısını güncelleme
+        function updateCartBadge(count) {
+            const badge = document.querySelector('.cart-badge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+
+        function addToWishlist(gameId) {
+            // İstek listesine ekleme
+            fetch('/Game/AddToWishlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ id: gameId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Oyun istek listesine eklendi!');
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Bir hata oluştu.');
+            });
+        }
+
+        function playGame(gameId) {
+            // Oyunu başlat
+            alert('Oyun başlatılıyor...');
+        }
+
+        function addReview(gameId) {
+            // Değerlendirme ekleme sayfasına yönlendir
+            window.location.href = '/Game/AddReview/' + gameId;
+        }
+
+        function addDLCToCart(dlcId) {
+            // DLC'yi sepete ekleme işlemi
+            fetch('/Cart/AddDLCToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ dlcId: dlcId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Sepet sayısını güncelle
+                    updateCartBadge(data.cartCount);
+                    alert('DLC sepete eklendi!');
+                } else {
+                    alert(data.message || 'Bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Bir hata oluştu.');
+            });
+        }
+
+        function downloadDLC(dlcId) {
+            // DLC indirme işlemi
+            alert('DLC indiriliyor...');
+        }
+
+        function toggleMainSound() {
+            const video = document.getElementById('main-video');
+            const soundBtn = document.getElementById('main-sound-btn');
+            
+            if (video && soundBtn) {
+                if (video.muted) {
+                    video.muted = false;
+                    soundBtn.textContent = '🔊';
+                } else {
+                    video.muted = true;
+                    soundBtn.textContent = '🔇';
+                }
+            }
+        }
+    </script>
+} 

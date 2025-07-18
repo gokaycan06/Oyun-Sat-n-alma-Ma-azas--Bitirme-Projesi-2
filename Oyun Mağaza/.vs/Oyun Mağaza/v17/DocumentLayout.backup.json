@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gok_a\\OneDrive\\Masa\u00FCst\u00FC\\bitik proje\\Oyun Ma\u011Faza\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A973E589-E32F-4467-9CB6-A2525E9E52E5}|Oyun Ma\u011Faza\\Oyun Ma\u011Faza.csproj|c:\\users\\gok_a\\onedrive\\masa\u00FCst\u00FC\\bitik proje\\oyun ma\u011Faza\\oyun ma\u011Faza\\views\\game\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A973E589-E32F-4467-9CB6-A2525E9E52E5}|Oyun Ma\u011Faza\\Oyun Ma\u011Faza.csproj|solutionrelative:oyun ma\u011Faza\\views\\game\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A973E589-E32F-4467-9CB6-A2525E9E52E5}|Oyun Ma\u011Faza\\Oyun Ma\u011Faza.csproj|c:\\users\\gok_a\\onedrive\\masa\u00FCst\u00FC\\bitik proje\\oyun ma\u011Faza\\oyun ma\u011Faza\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A973E589-E32F-4467-9CB6-A2525E9E52E5}|Oyun Ma\u011Faza\\Oyun Ma\u011Faza.csproj|solutionrelative:oyun ma\u011Faza\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A973E589-E32F-4467-9CB6-A2525E9E52E5}|Oyun Ma\u011Faza\\Oyun Ma\u011Faza.csproj|c:\\users\\gok_a\\onedrive\\masa\u00FCst\u00FC\\bitik proje\\oyun ma\u011Faza\\oyun ma\u011Faza\\wwwroot\\css\\store.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A973E589-E32F-4467-9CB6-A2525E9E52E5}|Oyun Ma\u011Faza\\Oyun Ma\u011Faza.csproj|solutionrelative:oyun ma\u011Faza\\wwwroot\\css\\store.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\gok_a\\OneDrive\\Masa\u00FCst\u00FC\\bitik proje\\Oyun Ma\u011Faza\\Oyun Ma\u011Faza\\Views\\Game\\Details.cshtml",
+              "RelativeDocumentMoniker": "Oyun Ma\u011Faza\\Views\\Game\\Details.cshtml",
+              "ToolTip": "C:\\Users\\gok_a\\OneDrive\\Masa\u00FCst\u00FC\\bitik proje\\Oyun Ma\u011Faza\\Oyun Ma\u011Faza\\Views\\Game\\Details.cshtml",
+              "RelativeToolTip": "Oyun Ma\u011Faza\\Views\\Game\\Details.cshtml",
+              "ViewState": "AgIAABcBAAAAAAAAAAAAABwBAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-21T19:01:28.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameController.cs",
+              "DocumentMoniker": "C:\\Users\\gok_a\\OneDrive\\Masa\u00FCst\u00FC\\bitik proje\\Oyun Ma\u011Faza\\Oyun Ma\u011Faza\\Controllers\\GameController.cs",
+              "RelativeDocumentMoniker": "Oyun Ma\u011Faza\\Controllers\\GameController.cs",
+              "ToolTip": "C:\\Users\\gok_a\\OneDrive\\Masa\u00FCst\u00FC\\bitik proje\\Oyun Ma\u011Faza\\Oyun Ma\u011Faza\\Controllers\\GameController.cs",
+              "RelativeToolTip": "Oyun Ma\u011Faza\\Controllers\\GameController.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAmwJIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T18:13:25.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "store.css",
+              "DocumentMoniker": "C:\\Users\\gok_a\\OneDrive\\Masa\u00FCst\u00FC\\bitik proje\\Oyun Ma\u011Faza\\Oyun Ma\u011Faza\\wwwroot\\css\\store.css",
+              "RelativeDocumentMoniker": "Oyun Ma\u011Faza\\wwwroot\\css\\store.css",
+              "ToolTip": "C:\\Users\\gok_a\\OneDrive\\Masa\u00FCst\u00FC\\bitik proje\\Oyun Ma\u011Faza\\Oyun Ma\u011Faza\\wwwroot\\css\\store.css",
+              "RelativeToolTip": "Oyun Ma\u011Faza\\wwwroot\\css\\store.css",
+              "ViewState": "AgIAADkDAAAAAAAAAAAAAEgDAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-20T22:15:47.442Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
